@@ -1,0 +1,57 @@
+
+<nav>
+    <div class="sidebar" [ngClass]="{ 'closed': isClosed }">
+        <!-- Logo -->
+        
+        <div class="logo">
+   
+          @if(isClosed){
+            <div class="align-icon-arrow" [ngStyle]="isClosed ? {} : {'justify-content': 'center'}"> 
+            <svg width="16" class="arrow-hover"  (click)="toggleSidebar()" height="14" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg" style="transform: rotate(180deg);">
+              <path d="M15 7.00008H1M1 7.00008L6.83333 1.16675M1 7.00008L6.83333 12.8334" stroke="black" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          }@else{
+            <div class="align-icon-arrow" [ngStyle]="isClosed ? {} : {'justify-content': 'space-between'}">  
+            
+            <a href=""><img style="padding:10px" src="https://s3-alpha-sig.figma.com/img/5076/33a6/ed223ed4437865eb9b4fc4ba17531751?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=CCB54oHBC627IU~44ShMUtvlCYwFQ-wSI2nYaOE1kMxgQyBBFGyfvp~oRNfmTPXPjnVVNP52w-JbsEL8G-N4rKGGSYl00HRFXZTeEodzUkwhUsRt-ndcjt~G72x9ISKYoAdj~Ill2TuXCydtugJgwfFv1UtMQAILayYFKlrs7GbpvhZPTzjbS6FxWX-e3ry8eqfJtqFP6HZMt6ne8ITw-HICTlaHcgQInXe4vgeFRKSrRAkr0xtcSkOL~1WKiTEdm~HHcLcHZVOTktZQKJgW~HSoxmC-NijcvGz2HpxIelIo8mSacT-Jy2EcTXvtOMXJ3lJHnVQm8hKnpW3YUtD4lw__" alt="Axians Logo">
+            </a>
+            <svg width="16" class="arrow-hover"  (click)="toggleSidebar()" height="14" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg" style="transform: rotate(0deg);">
+              <path d="M15 7.00008H1M1 7.00008L6.83333 1.16675M1 7.00008L6.83333 12.8334" stroke="black" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            </div>
+          }
+        </div>
+       
+        <div >
+     
+        </div>
+  
+
+    
+      
+
+        <!-- Sidebar Menu -->
+        <ul class="menu" >
+            <li class="active"><img class = "dashboardicon" src="icons/dashboard.svg" alt=""> <a href="#">Dashboard</a></li>
+            <li><img class="kmreporticon" src="icons/kmreport.svg" alt=""> <a href="#">Km Report</a></li>
+            <li><img class="maintenanceicon"src="icons/maintenance.svg" alt=""><a href="#">Maintenance History</a> </li>
+            <li><img class= "damageicon"src="icons/damage.svg" alt=""> <a href="#">Damage Report</a> </li>
+            <li> <img class = "requesticon"src="icons/request.svg" alt=""><a href="#">Request New Car</a></li>
+               
+        </ul>
+
+        <!-- Settings -->
+        <div class="settings">
+            <img class="settingsicon" src="icons/settings.svg" alt="image" >
+            <a href="">Settings</a>
+        </div>
+
+        <!-- User Profile -->
+        <div class="user-profile">
+            <img src="icons/pfp.jfif" alt="User">
+            <span>Jeton Nikollbibaj</span>
+            <img id = "logouticon"src="icons/logout.svg" alt="">
+        </div>
+    </div>
+</nav>
