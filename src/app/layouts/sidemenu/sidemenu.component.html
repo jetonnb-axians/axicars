@@ -33,8 +33,8 @@
 
         <!-- Sidebar Menu -->
         <ul class="menu" >
-            <li class="active"><img class = "dashboardicon" src="icons/dashboard.svg" alt=""> <a href="#">Dashboard</a></li>
-            <li><img class="kmreporticon" src="icons/kmreport.svg" alt=""> <a href="#">Km Report</a></li>
+            <li [routerLink]="['/dashboard']" class="active"><img class = "dashboardicon" src="icons/dashboard.svg" alt=""> <a >Dashboard</a></li>
+            <li [routerLink]="['/kmreports']"><img class="kmreporticon" src="icons/kmreport.svg" alt=""> <a href="#">Km Report</a></li>
             <li><img class="maintenanceicon"src="icons/maintenance.svg" alt=""><a href="#">Maintenance History</a> </li>
             <li><img class= "damageicon"src="icons/damage.svg" alt=""> <a href="#">Damage Report</a> </li>
             <li> <img class = "requesticon"src="icons/request.svg" alt=""><a href="#">Request New Car</a></li>
