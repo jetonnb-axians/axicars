@@ -33,15 +33,18 @@
         <li class="tab">Maintenance history</li>
         <li class="tab">Damage Report</li>
     </ul>
-    
-    <div class="table-header">
-        <div class="table-filters">
-            <button class="filter-button active">Daily</button>
-            <button class="filter-button">Monthly</button>
-            <button class="filter-button">Yearly</button>
-        </div>
-    </div>
+  
    
+    <div class="add-car-kmreport">
+      <div class="date-button">
+          <label for="from-date">From:</label>
+          <input type="date" id="from-date">
+  
+          <label for="to-date">To:</label>
+          <input type="date" id="to-date">
+      </div>
+      <button class="add-button">Add Car Km Report</button>
+  </div>
     <table class="kmreport-table">
         <thead>
             <tr>
@@ -52,9 +55,7 @@
                 <th></th>
             </tr>
         </thead>
-         <div class="add-car-kmreport">
-        <button class="add-button">Add Car Km Report</button>
-         </div>
+         
         <tbody>
             <tr>
                 <td>Jeton</td>
@@ -87,4 +88,3 @@
   </div>
 </div>
 
-</div>

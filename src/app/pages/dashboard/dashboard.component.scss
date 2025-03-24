@@ -18,7 +18,7 @@
       border-radius: 8px;
       padding: 15px 20px;
       text-align: left;
-      min-width: 220px;
+      min-width: 240px;
       height: 170px; 
       display: flex;
       flex-direction: column;
@@ -46,10 +46,11 @@
     height: auto;
   }
   .table-container {
-    width: 100%;
+    width: 94%;
     background: #fff;
     border-radius: 10px;
-    padding: 20px;
+    padding-top: 60px;
+    
 }
 
 .table-tabs {
@@ -57,6 +58,7 @@
   border-bottom: 2px solid #ddd;
   padding-bottom: 10px;
   margin-bottom: 20px;
+  
 }
 
 .tab {
@@ -64,31 +66,31 @@
   cursor: pointer;
   padding: 10px;
   font-weight: bold;
+  
 }
 
 .tab:hover{
   border-bottom: 2px solid #1E72C0;
  
 }
-.tab.active{
-  border-bottom: 2px solid #1E72C0;
- 
-}
+
 
 
 .table-filters {
   text-align: right;
   margin-bottom: 10px;
   transition: all 0.3s;
+  
 }
 
 .filter-button {
   padding: 8px 15px;
-  border: none;
-  background: #ddd;
+  border: solid 1px #d4d7da;
+  background: white;
   border-radius: 5px;
   cursor: pointer;
-  margin-left: 5px;
+  margin-left: 9px;
+  color: #1E72C0;
 }
 
 .filter-button:hover {
@@ -105,6 +107,7 @@
 .kmreport-table {
   width: 100%;
   border-collapse: collapse;
+
 }
 
 .kmreport-table th, .kmreport-table td {
@@ -125,8 +128,11 @@ ul {
 }
 
 .add-car-kmreport {
-  text-align: center;
-  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Space between date inputs and button */
+  justify-content: flex-end; /* Align everything to the right */
+  width: 100%;
 }
 
 .add-button {
@@ -137,8 +143,9 @@ ul {
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
-  width: 350%;
+ 
 }
+
 
 .view-all {
   text-align: center;
@@ -153,5 +160,29 @@ ul {
   border-radius: 5px;
   cursor: pointer;
 }
+
+
+.date-button {
+  display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.date-button label {
+  font-size: 14px;
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+
+input[type="date"] {
+  padding: 8px;
+  border: 1px solid #000;
+  border-radius: 5px;
+  font-size: 14px;
+  width: 140px;
+}
+
+
 
 }
