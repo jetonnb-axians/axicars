@@ -83,11 +83,11 @@ input[type="search"] {
     cursor: pointer;
 }
 
-.carrequest-table td:first-child {
-    display: flex;
-    align-items: center;
-    gap: 10px; 
-}
+// .carrequest-table td:first-child {
+//     display: flex;
+//     align-items: center;
+//     gap: 10px; 
+// }
 
 .carrequest-table td:first-child img {
     width: 40px; 
@@ -164,9 +164,13 @@ ul {
 }
 
 
-.carpng {
-    width: 25px; 
-    height: auto;
-    margin-right: 5px;
-    margin-top: 10px;
-}
+// .carpng {
+    // width: 25px !important; 
+    // height: auto !important;
+    // margin-right: 5px !important;
+    // margin-top: 10px!important;
+    
+    // display: flex;
+    // align-items: center;
+    // gap: 10px; 
+// }
