@@ -40,7 +40,6 @@ h1 {
     font-weight: bold;
 }
 
-
 .search-box {
     display: flex;
     justify-content: flex-end;
@@ -84,16 +83,14 @@ input[type="search"] {
     cursor: pointer;
 }
 
+
 .cardatabase-table td:first-child {
     display: flex;
     align-items: center;
     gap: 10px; /* Space between image and text */
 }
 
-.kmreport-table td:first-child img {
-    width: 40px; /* Adjust size as needed */
-    height: auto;
-}
+
 
 
 label {

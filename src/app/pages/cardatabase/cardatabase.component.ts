@@ -1,12 +1,19 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common'; 
 
 @Component({
   selector: 'app-cardatabase',
-  imports: [RouterModule],
+  standalone: true,
+  imports: [RouterModule, CommonModule], 
   templateUrl: './cardatabase.component.html',
-  styleUrl: './cardatabase.component.scss'
+  styleUrls: ['./cardatabase.component.scss']
 })
 export class CardatabaseComponent {
+  tabs: string[] = ['Active Cars', 'Available Cars', 'All Cars'];
+  activeTab: number = 0; 
 
+  setActiveTab(index: number): void {
+    this.activeTab = index;
+  }
 }

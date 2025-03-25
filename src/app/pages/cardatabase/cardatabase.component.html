@@ -4,9 +4,13 @@
 
     </div>
     <ul class="table-tabs">
-        <li class="tab">Active Cars</li>
-        <li class="tab">Available Cars</li>
-        <li class="tab">All Cars</li>
+        <li 
+            *ngFor="let tab of tabs; let i = index" 
+            class="tab" 
+            [class.active]="activeTab === i" 
+            (click)="setActiveTab(i)">
+            {{ tab }}
+        </li>
     </ul>
     
     <label class="search-label">

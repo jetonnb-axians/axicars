@@ -1,0 +1,164 @@
+
+
+.table-container {
+    width: 94%;
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    margin: auto;
+}
+
+h1 {
+    font-weight: normal;
+}
+
+.table-tabs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+      gap: 500px;   /* Adjust spacing between tabs */
+}
+
+.tab {
+    padding: 12px 20px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    color: #333;
+    background: transparent;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease-in-out;
+}
+
+.tab:hover,
+.tab.active {
+    border-bottom: 2px solid #1E72C0;
+    color: #1E72C0;
+    font-weight: bold;
+}
+
+.search-box {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
+
+input[type="search"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    width: 230px;
+}
+
+.carrequest-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+}
+
+.carrequest-table th, .carrequest-table td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+.carrequest-table th {
+    background: #f9f9f9;
+    font-weight: bold;
+}
+
+.status.active {
+    color: green;
+    font-weight: bold;
+}
+
+.more-options {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.carrequest-table td:first-child {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between image and text */
+}
+
+.kmreport-table td:first-child img {
+    width: 40px; /* Adjust size as needed */
+    height: auto;
+}
+
+
+label {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 15px;
+}
+
+input[type="search"] {
+    padding: 12px;
+    background-color: rgba(164, 164, 164, 0.166);
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    transition: 0.3s;
+}
+
+ul {
+    list-style: none;
+  }
+
+  .add-button {
+    padding: 10px 20px;
+    background: #1E72C0;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 13px;
+    float: right;
+    display: flex;
+    gap: 5px;
+   
+  }
+  .table-container > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search-label {
+    position: relative;
+}
+
+.search-wrapper {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.search-wrapper input {
+    padding: 8px 30px 8px 10px; /* Add space for the icon */
+    font-size: 13px;
+    width: 100%;
+}
+
+.search-wrapper img {
+    position: absolute;
+    right: 10px; /* Position the icon inside the input */
+    height: 20px; /* Adjust size of the icon */
+    width: 15px; /* Adjust size of the icon */
+}
+
+.round-img {
+    width: 24px; /* Adjust the size */
+    height: 24px; /* Adjust the size */
+    border-radius: 50%; /* Makes the image round */
+    object-fit: cover; /* Ensures the image covers the area without distortion */
+}

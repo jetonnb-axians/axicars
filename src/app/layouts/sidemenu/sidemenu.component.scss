@@ -46,7 +46,7 @@ nav {
     list-style-type: none;
     padding: 0;
     flex-grow: 1;
-    margin-top: 15%;
+    margin-top: 8%;
 }
 .menu li.sidebar.closed {
     display: none;
@@ -91,9 +91,11 @@ nav {
     transition: background 0.3s;
 }
 
-.menu li:hover {
+.menu li:hover,
+.menu li.active { /* ✅ Keeps active tab highlighted */
     background: #1E72C033;
 }
+
 
 .menu li i {
     margin-right: 12px;
