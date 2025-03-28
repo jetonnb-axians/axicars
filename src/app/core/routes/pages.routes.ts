@@ -30,5 +30,6 @@ export default [
     {
         path:'driversdatabase',
         component: DriversdatabaseComponent
-    }
+    },
+
 ] as Route[];

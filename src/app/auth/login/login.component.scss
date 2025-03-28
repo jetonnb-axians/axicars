@@ -105,6 +105,7 @@
     font-size: 14px;
     color: #007bff;
     text-decoration: none;
+    cursor: pointer;
 }
 
 
@@ -151,3 +152,9 @@
     top: 74%;
     transform: translateY(-50%);
 }
+
+.error-text {
+    color: red;
+    font-size: 14px;
+  }
+  

@@ -6,30 +6,33 @@
             <h2>Create account</h2>
             <button id="outlookbutton"> <img src="icons/outlook.svg" alt="">Continue with Outlook</button>
             <div class="input-container">
+                <form [formGroup]="userForm">
              
-                <svg class = "icon3" width="20" height="17" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M6 6C7.3807 6 8.5 4.88071 8.5 3.5C8.5 2.11929 7.3807 1 6 1C4.61929 1 3.5 2.11929 3.5 3.5C3.5 4.88071 4.61929 6 6 6Z" stroke="#5C5C5C" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M10.2951 11C10.2951 9.065 8.37007 7.5 6.00007 7.5C3.63008 7.5 1.70508 9.065 1.70508 11" stroke="#5C5C5C" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>           
-                 <p class="form-group-text">First Name</p>
-                <input type="email" placeholder="  John Doe" required>
-                <svg class="icon" width="15" height="12" viewBox="0 0 15 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M1.68799 2.4285L5.95404 5.74989C6.68801 6.32132 7.69714 6.32132 8.43111 5.74989L12.6972 2.42847" stroke="black" stroke-opacity="0.64" stroke-width="1.42857" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M12.0092 1H2.37615C1.61612 1 1 1.63959 1 2.42857V9.57143C1 10.3604 1.61612 11 2.37615 11H12.0092C12.7692 11 13.3853 10.3604 13.3853 9.57143V2.42857C13.3853 1.63959 12.7692 1 12.0092 1Z" stroke="black" stroke-opacity="0.64" stroke-width="1.42857" stroke-linecap="round"/>
-                </svg>
-                <p class="form-group-text">Email</p>
-                <input type="email" placeholder="  Johndoe@gmail.com" required>
-            
-                <svg class="icon2" width="14" height="16" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M7 9.92306V11.4615M3.25 6.48367C3.60356 6.46152 4.03944 6.46152 4.6 6.46152H9.4C9.96055 6.46152 10.3965 6.46152 10.75 6.48367M3.25 6.48367C2.80876 6.51129 2.49572 6.57344 2.22852 6.71306C1.80516 6.93429 1.46095 7.28729 1.24524 7.72152C1 8.21521 1 8.86137 1 10.1538V11.2308C1 12.5232 1 13.1694 1.24524 13.6631C1.46095 14.0973 1.80516 14.4503 2.22852 14.6715C2.70982 14.9231 3.33988 14.9231 4.6 14.9231H9.4C10.6601 14.9231 11.2901 14.9231 11.7715 14.6715C12.1949 14.4503 12.5391 14.0973 12.7548 13.6631C13 13.1694 13 12.5232 13 11.2308V10.1538C13 8.86137 13 8.21521 12.7548 7.72152C12.5391 7.28729 12.1949 6.93429 11.7715 6.71306C11.5043 6.57344 11.1912 6.51129 10.75 6.48367M3.25 6.48367V4.92306C3.25 2.79889 4.92893 1.0769 7 1.0769C9.07105 1.0769 10.75 2.79889 10.75 4.92306V6.48367" stroke="black" stroke-opacity="0.64" stroke-width="1.48597" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                <p class="form-group-text">Password</p>
-                <input type="password" placeholder="  ***********" required>
-                <p id = "undertext"  style="color: #5C5C5C;">Must be at least 8 character</p>
+                    <svg class = "icon3" width="20" height="17" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6 6C7.3807 6 8.5 4.88071 8.5 3.5C8.5 2.11929 7.3807 1 6 1C4.61929 1 3.5 2.11929 3.5 3.5C3.5 4.88071 4.61929 6 6 6Z" stroke="#5C5C5C" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M10.2951 11C10.2951 9.065 8.37007 7.5 6.00007 7.5C3.63008 7.5 1.70508 9.065 1.70508 11" stroke="#5C5C5C" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>           
+                    <p class="form-group-text">First Name</p>
+                    <input type="email" formControlName="username"  placeholder="  John Doe" required>
+                    <svg class="icon" width="15" height="12" viewBox="0 0 15 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1.68799 2.4285L5.95404 5.74989C6.68801 6.32132 7.69714 6.32132 8.43111 5.74989L12.6972 2.42847" stroke="black" stroke-opacity="0.64" stroke-width="1.42857" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M12.0092 1H2.37615C1.61612 1 1 1.63959 1 2.42857V9.57143C1 10.3604 1.61612 11 2.37615 11H12.0092C12.7692 11 13.3853 10.3604 13.3853 9.57143V2.42857C13.3853 1.63959 12.7692 1 12.0092 1Z" stroke="black" stroke-opacity="0.64" stroke-width="1.42857" stroke-linecap="round"/>
+                    </svg>
+                    <p class="form-group-text">Email</p>
+                    <input type="email" formControlName="email" placeholder="  Johndoe@gmail.com" required>
+                
+                    <svg class="icon2" width="14" height="16" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7 9.92306V11.4615M3.25 6.48367C3.60356 6.46152 4.03944 6.46152 4.6 6.46152H9.4C9.96055 6.46152 10.3965 6.46152 10.75 6.48367M3.25 6.48367C2.80876 6.51129 2.49572 6.57344 2.22852 6.71306C1.80516 6.93429 1.46095 7.28729 1.24524 7.72152C1 8.21521 1 8.86137 1 10.1538V11.2308C1 12.5232 1 13.1694 1.24524 13.6631C1.46095 14.0973 1.80516 14.4503 2.22852 14.6715C2.70982 14.9231 3.33988 14.9231 4.6 14.9231H9.4C10.6601 14.9231 11.2901 14.9231 11.7715 14.6715C12.1949 14.4503 12.5391 14.0973 12.7548 13.6631C13 13.1694 13 12.5232 13 11.2308V10.1538C13 8.86137 13 8.21521 12.7548 7.72152C12.5391 7.28729 12.1949 6.93429 11.7715 6.71306C11.5043 6.57344 11.1912 6.51129 10.75 6.48367M3.25 6.48367V4.92306C3.25 2.79889 4.92893 1.0769 7 1.0769C9.07105 1.0769 10.75 2.79889 10.75 4.92306V6.48367" stroke="black" stroke-opacity="0.64" stroke-width="1.48597" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <p class="form-group-text">Password</p>
+                    <input type="password" formControlName="password"  placeholder="  ***********" required>
+                    <p id = "undertext"  style="color: #5C5C5C;">Must be at least 8 character</p>
+                </form>
             </div>         
        
-            <button>Create account</button>
+            <button (click)="onSubmit()">Create account</button>
             <p>Already have an account? <a id = "login" routerLink="/auth/login" style="cursor: pointer;">Log in</a></p>
+            <p *ngIf="errorMessage" class="error-text">{{ errorMessage }}</p>
         </div>
     </div>
     <div class="background"></div>

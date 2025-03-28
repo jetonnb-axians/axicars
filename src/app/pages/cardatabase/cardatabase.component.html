@@ -1,8 +1,11 @@
 <div class="table-container">
     <div><h1>Car Database</h1>
-        <button class="add-button"><img src="icons/plussign.svg" alt="">Add Car</button>
+        <button class="add-button" ><img src="icons/plussign.svg" alt="">Add Car</button>
 
     </div>
+    @if(this.openDialog) {
+        <app-newcar></app-newcar>
+    }
     <ul class="table-tabs">
         <li 
             *ngFor="let tab of tabs; let i = index" 

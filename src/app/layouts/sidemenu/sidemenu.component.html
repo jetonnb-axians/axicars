@@ -65,9 +65,11 @@
 
         <!-- User Profile -->
         <div class="user-profile">
-            <img src="icons/pfp.jfif" alt="User">
-            <span>Jeton Nikollbibaj</span>
-            <img id = "logouticon"src="icons/logout.svg" alt="">
+          <img src="icons/pfp.jfif" alt="User">
+          <span *ngIf="userName; else guest">{{ userName }}</span>
+          <ng-template #guest><span>Guest</span></ng-template>
+          <img id="logouticon" src="icons/logout.svg" alt="Logout" routerLink="/auth/login" style="cursor: pointer;">
         </div>
+        
     </div>
 </nav>

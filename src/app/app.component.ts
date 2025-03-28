@@ -17,4 +17,7 @@ import { CardatabaseComponent } from "./pages/cardatabase/cardatabase.component"
 export class AppComponent {
   title = 'axiCars';
 
+  ngOninit() {
+  }
+
 }
