@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { SidemenuComponent } from './layouts/sidemenu/sidemenu.component';
-import { CardatabaseComponent } from "./pages/cardatabase/cardatabase.component";
 
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, CardatabaseComponent],
+  imports: [RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
   

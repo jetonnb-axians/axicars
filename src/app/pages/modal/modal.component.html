@@ -1,0 +1,48 @@
+<div #modal class="modal">
+    <div class="modal-content">
+      <span class="close" (click)="closeModal()">&times;</span>
+      <h2>Add new car</h2>
+      <p>Please fill out form to add new car</p>
+      
+      
+      
+      <div class="add picture"></div>
+    <div class="inputs">
+        <div class="input-group">
+            <label for="model">Model</label>
+            <input type="text" id="model"required>
+            <label for="driver">Driver</label>
+            <select id="status" required>
+                <option value="active">Jetoni</option>
+                <option value="inactive">Drini</option>
+                <option value="maintenance">Blerta</option>
+            </select>
+            <label for="plate-number">Plate Number</label>
+            <input type="text" id="plate-number"  required>
+            <label for="fuel">Fuel</label>
+            <input type="text" id="fuel" required>
+            <label for="km">Km</label>
+            <input type="text" id="km" required>
+            <label for="last-inspection">Last Inspection</label>
+            <input type="date" id="last-inspection" required>
+            <label for="status">Status</label>
+            <select id="status" required>
+                <option value="active">Active</option>
+                <option value="inactive">Available</option>
+                <option value="maintenance">Damaged</option>
+            </select>
+            <label for="next-inspection">Next Inspection</label>
+            <input type="date" id="next-inspection" required>
+                
+<br>
+            <button>Cancel</button>
+            <button >Add Car</button>
+
+        
+
+        
+    </div>
+    </div>
+   
+  </div>
+  
