@@ -1,48 +1,129 @@
 <div #modal class="modal">
     <div class="modal-content">
       <span class="close" (click)="closeModal()">&times;</span>
+      
+      <div class="title">
       <h2>Add new car</h2>
       <p>Please fill out form to add new car</p>
+    </div>
       
       
-      
-      <div class="add picture"></div>
-    <div class="inputs">
-        <div class="input-group">
-            <label for="model">Model</label>
-            <input type="text" id="model"required>
-            <label for="driver">Driver</label>
-            <select id="status" required>
-                <option value="active">Jetoni</option>
-                <option value="inactive">Drini</option>
-                <option value="maintenance">Blerta</option>
-            </select>
-            <label for="plate-number">Plate Number</label>
-            <input type="text" id="plate-number"  required>
-            <label for="fuel">Fuel</label>
-            <input type="text" id="fuel" required>
-            <label for="km">Km</label>
-            <input type="text" id="km" required>
-            <label for="last-inspection">Last Inspection</label>
-            <input type="date" id="last-inspection" required>
-            <label for="status">Status</label>
-            <select id="status" required>
-                <option value="active">Active</option>
-                <option value="inactive">Available</option>
-                <option value="maintenance">Damaged</option>
-            </select>
-            <label for="next-inspection">Next Inspection</label>
-            <input type="date" id="next-inspection" required>
+      <div class="container">
+        <!-- Nese kem file tselektum e bon hide kto edhe e shfaq UI me tdhanat e files shih pikturen 45 ne figma -->
+         @if (fileData) {
+            <table class="added-car">
+            <tr>
+                <td><img *ngIf="filePreview" [src]="filePreview" alt="Selected Image" width="50">{{fileName}}
+                
+                <p style="color: gray;">File Size:{{ (fileData.size / 1024 / 1024).toFixed(2) }} MB        </p>
+                <span class="close">&times;</span>
+            </td>
+               
+            </tr>
+        </table>
+         } @else {
+            <label class="upload-box">
+                <img src="icons/uploud.svg" alt="Upload Icon">
+                <div class="upload-text">
+                  Upload picture<br>
+                  <small>Max file size 5mb </small>
+                </div>
+                <input type="file" (change)="onFileSelected($event)" >
+            </label>
+        
+         }
+         
+         
+        
+     
+
+          <div class="form-grid">
+            <div class="column">
+
+                <div class="input-group">
+                    
+                    <div class="input-group-one">
+                        <div class="input-form">
+                            <label for="model">Model</label>
+                            <input type="text" id="model" required>
+                        </div>
+                        <div class="input-form">
+                            <label for="status">Driver</label>
+                            <select id="status" required>
+                                <option value="" selected disabled hidden></option>
+                                <option value="active">Jetoni</option>
+                                <option value="inactive">Rexha</option>
+                                <option value="maintenance">Fidani</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="input-group-one">
+                        <div class="input-form">
+                            <label for="model">Plate Number</label>
+                            <input type="text" id="model" required>
+                        </div>
+                        <div class="input-form">
+                            <div class="input-form">
+                                <label for="model">Fuel</label>
+                                <input type="text" id="fuel" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group-one">
+                        <div class="input-form">
+                            <label for="model">Km</label>
+                            <input type="text" id="km" required>
+                        </div>
+                        <div class="input-form">
+                            <label for="model">Last Inspection</label>
+                            <input type="date" id="lastinspection" required>
+                        </div>
+                    </div>
+                    <div class="input-group-one">
+                        <div class="input-form">
+                            <label for="status">Status</label>
+                            <select id="status" required>
+                                <option value="" selected disabled hidden></option>
+                                <option value="active">Active</option>
+                                <option value="inactive">Available</option>
+                                <option value="maintenance">Damaged</option>
+                            </select>
+                        </div>
+                        <div class="input-form">
+                            <label for="model">Next inspection</label>
+                            <input type="date" id="nextinspection" required>
+                        </div>
+                      
+                    </div>
+               
+        </div>
+    </div>
+
+    </div>
+        
+        <div class="buttons">
+            <button class="cancel-btn" (click)="closeModal()">Cancel</button>
+            <button class="add-btn">Add car</button>
+        </div>
+    </div>
                 
 <br>
-            <button>Cancel</button>
-            <button >Add Car</button>
+         
 
         
 
         
     </div>
-    </div>
-   
-  </div>
-  
+      
+
+
+
+
+
+                    <!-- <label for="status">Status</label>
+                    <select id="status" required>
+                        <option value="active">Active</option>
+                        <option value="inactive">Available</option>
+                        <option value="maintenance">Damaged</option>
+                    </select>
+                </div> -->

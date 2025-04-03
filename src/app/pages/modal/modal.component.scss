@@ -1,6 +1,7 @@
 .modal {
     display: none;
     position: fixed;
+    align-items: center;
     z-index: 1;
     left: 0;
     top: 0;
@@ -16,7 +17,7 @@
     padding: 20px;
     width: 98%;
     height: 100%;
-    margin-top: 80px;
+    margin-top: 40px;
     border-radius: 8px;
   }
   
@@ -25,3 +26,156 @@
     font-size: 24px;
     cursor: pointer;
   }
+
+  .title{
+    text-align: center;
+    margin-left: 100px;  }
+
+    .upload-box {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .upload-box img {
+      margin-bottom: 10px; /* Adds space between the icon and text */
+      width: 30px; /* Adjust the size of the icon as needed */
+      height: auto; /* Maintains aspect ratio of the icon */
+    }
+    
+    .upload-text {
+      font-size: 16px;
+    }
+    
+
+  .container {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    width: 450px;
+    text-align: center;
+}
+
+.form-grid {
+    display: flex;
+    justify-content: space-between;
+}
+.column {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.input-group-one {
+    display: flex;
+    text-align: left;
+    gap: 50px;
+}
+.input-group-one label {
+    display: flex;
+    text-align: left;
+    width: 100%;
+}
+
+
+
+.input-group input, .input-group select {
+  width: 250px;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  max-width: 500%; 
+  background-color: rgba(189, 189, 189, 0.198);
+  box-sizing: border-box; 
+}
+
+
+
+.buttons {
+  display: flex;
+  justify-content: flex-end; 
+  gap: 10px; 
+  margin-top: 15px;
+  margin-right: -90px;
+}
+
+.buttons button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.cancel-btn {
+  background-color: #ffffff;
+  border: 1px solid #d4d4d4 !important;
+}
+
+.add-btn {
+  background-color: #1E72C0;
+  color: white;
+}
+  
+
+.upload-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed #ccc;
+  padding: 50px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  width: 450px;
+  text-align: center;
+  position: relative;
+}
+
+.upload-box input {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.upload-box:hover {
+  border-color: #3678be;
+}
+
+.added-car {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  margin-bottom: 30px;
+}
+
+.added-car th, .added-car td {
+  padding: 18px;
+  border: 1px solid #ddd;
+  text-align: left;
+  width: 512px;
+  height: 10px;
+  font-size: 14px;
+}
+
+.added-car th {
+  background: #f9f9f9;
+  font-weight: bold;
+}
+.added-car td:first-child {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between image and text */
+}
+
+.added-car p {
+  margin-left: 240px;
+}
+.added-car img {
+  margin-left: -20px;  /* Adjust this value as needed */
+}
