@@ -10,28 +10,28 @@
       
       <div class="container">
         <!-- Nese kem file tselektum e bon hide kto edhe e shfaq UI me tdhanat e files shih pikturen 45 ne figma -->
-         @if (fileData) {
+        @if (fileData) {
             <table class="added-car">
-            <tr>
-                <td><img *ngIf="filePreview" [src]="filePreview" alt="Selected Image" width="50">{{fileName}}
-                
-                <p style="color: gray;">File Size:{{ (fileData.size / 1024 / 1024).toFixed(2) }} MB        </p>
-                <span class="close">&times;</span>
-            </td>
-               
-            </tr>
-        </table>
-         } @else {
+              <tr>
+                <td>
+                  <img *ngIf="filePreview" [src]="filePreview" alt="Selected Image" width="50">
+                  {{ fileName }}
+                  <p style="color: gray;">File Size: {{ (fileData.size / 1024 / 1024).toFixed(2) }} MB</p>
+                  <span class="close" (click)="removeFile()">&times;</span>
+                </td>
+              </tr>
+            </table>
+          } @else {
             <label class="upload-box">
-                <img src="icons/uploud.svg" alt="Upload Icon">
-                <div class="upload-text">
-                  Upload picture<br>
-                  <small>Max file size 5mb </small>
-                </div>
-                <input type="file" (change)="onFileSelected($event)" >
+              <img src="icons/uploud.svg" alt="Upload Icon">
+              <div class="upload-text">
+                Upload picture<br>
+                <small>Max file size 5mb</small>
+              </div>
+              <input type="file" (change)="onFileSelected($event)">
             </label>
-        
-         }
+          }
+          
          
          
         
@@ -101,10 +101,11 @@
 
     </div>
         
-        <div class="buttons">
-            <button class="cancel-btn" (click)="closeModal()">Cancel</button>
-            <button class="add-btn">Add car</button>
-        </div>
+    <div class="buttons">
+        <button class="cancel-btn" (click)="closeModal()">Cancel</button>
+        <button class="add-btn">Add car</button>
+      </div>
+      
     </div>
                 
 <br>

@@ -10,18 +10,15 @@ import { CommonModule } from '@angular/common';
 
 })
 export class ModalComponent {
-
   @ViewChild('modal') modal!: ElementRef;
 
   fileData: File | null = null;
-selectedFile: any;
+  fileName: string = '';
+  filePreview: string | ArrayBuffer | null = null;
 
-fileName: string = '';
-filePreview: string | ArrayBuffer | null = null;
-
-ngOnInit() {
-  console.log('test',this.fileData)
-}
+  ngOnInit() {
+    console.log('test', this.fileData);
+  }
 
   openModal() {
     this.modal.nativeElement.style.display = 'block';
@@ -29,31 +26,43 @@ ngOnInit() {
 
   closeModal() {
     this.modal.nativeElement.style.display = 'none';
+    this.resetForm(); // Reset everything when closing the modal
   }
 
   onFileSelected(event: any) {
     const input = event.target as HTMLInputElement;
-   
-    this.fileData = event.target.files[0];
-
-
+    
     if (input.files && input.files.length > 0) {
-      const file = input.files[0];
-      this.fileName = file.name;
+      this.fileData = input.files[0];
+      this.fileName = this.fileData.name;
 
-      // Create a file preview
       const reader = new FileReader();
       reader.onload = () => {
         this.filePreview = reader.result;
       };
-      reader.readAsDataURL(file);
+      reader.readAsDataURL(this.fileData);
     }
   }
 
+  removeFile() {
+    this.fileData = null;
+    this.filePreview = null;
+    this.fileName = '';
+  }
 
+  resetForm() {
+    this.removeFile(); // Clear selected file data
 
-
-
-
-  
+    // Reset all input fields inside the modal
+    const inputs = this.modal.nativeElement.querySelectorAll('input, select');
+    inputs.forEach((input: HTMLElement) => {
+      if (input instanceof HTMLInputElement) {
+        if (input.type === 'text' || input.type === 'date' || input.type === 'file') {
+          input.value = ''; // Clear text, date, and file inputs
+        }
+      } else if (input instanceof HTMLSelectElement) {
+        input.selectedIndex = 0; // Reset dropdowns
+      }
+    });
+  }
 }
