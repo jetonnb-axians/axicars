@@ -1,144 +1,66 @@
 <div class="table-container">
-    <div><h1>Car Database</h1>
-        <button class="add-button" (click)="openModal()" ><img src="icons/plussign.svg" alt="">Add Car</button>
-    </div>
-    <app-modal #modal></app-modal>
-   
+  <div>
+    <h1>Car Database</h1>
+    <button class="add-button" (click)="openModal()">
+      <img src="icons/plussign.svg" alt="" />Add Car
+    </button>
+  </div>
 
-    @if(this.openDialog) {
-    }
-    <ul class="table-tabs">
-        <li 
-            *ngFor="let tab of tabs; let i = index" 
-            class="tab" 
-            [class.active]="activeTab === i" 
-            (click)="setActiveTab(i)">
-            {{ tab }}
-        </li>
-    </ul>
-    
-    <label class="search-label">
-        <div class="search-wrapper">
-            <input type="search" placeholder="Search">
-            <img src="icons/search.svg" alt="">
-        </div>
-    </label>
-    
-    <table class="cardatabase-table">
-        <thead>
-            <tr>
-                <td>Model</td>
-                <td>Plate number</td>
-                <td>Km</td>
-                <td>Status</td>
-                <td>Driver</td>
-                <td>Fuel</td>
-                <td>Last inspection</td>
-                <td>Next inspection</td>
-                <td></td>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><img src="icons/carpng.png" alt="">Peugeot 208 2021</td>
-                <td>01-120-RKS</td>
-                <td>124.232km</td>
-                <td>Active</td>
-                <td><img class="round-img" src="icons/image.png" alt=""></td>
-                <td>Diesel</td>
-                <td>10.01.2024</td>
-                <td>10.02.2025</td>
-                <td><button class="more-options"><img src="icons/dots.svg" alt=""></button></td>
-            </tr>
-            <tr>
-                <td><img src="icons/carpng.png" alt="">Peugeot 208 2021</td>
-                <td>01-120-RKS</td>
-                <td>124.232km</td>
-                <td>Active</td>
-                <td><img class="round-img" src="icons/image.png" alt=""></td>
-                <td>Diesel</td>
-                <td>10.01.2024</td>
-                <td>10.02.2025</td>
-                <td><button class="more-options"><img src="icons/dots.svg" alt=""></button></td>
-            </tr>
-            <tr>
-                <td><img src="icons/carpng.png" alt="">Peugeot 208 2021</td>
-                <td>01-120-RKS</td>
-                <td>124.232km</td>
-                <td>Active</td>
-                <td><img class="round-img" src="icons/image.png" alt=""></td>
-                <td>Diesel</td>
-                <td>10.01.2024</td>
-                <td>10.02.2025</td>
-                <td><button class="more-options"><img src="icons/dots.svg" alt=""></button></td>
-            </tr>
-            <tr>
-                <td><img src="icons/carpng.png" alt="">Peugeot 208 2021</td>
-                <td>01-120-RKS</td>
-                <td>124.232km</td>
-                <td>Active</td>
-                <td><img class="round-img" src="icons/image.png" alt=""></td>
-                <td>Diesel</td>
-                <td>10.01.2024</td>
-                <td>10.02.2025</td>
-                <td><button class="more-options"><img src="icons/dots.svg" alt=""></button></td>
-            </tr>
-            <tr>
-                <td><img src="icons/carpng.png" alt="">Peugeot 208 2021</td>
-                <td>01-120-RKS</td>
-                <td>124.232km</td>
-                <td>Active</td>
-                <td><img class="round-img" src="icons/image.png" alt=""></td>
-                <td>Diesel</td>
-                <td>10.01.2024</td>
-                <td>10.02.2025</td>
-                <td><button class="more-options"><img src="icons/dots.svg" alt=""></button></td>
-            </tr>
-            <tr>
-                <td><img src="icons/carpng.png" alt="">Peugeot 208 2021</td>
-                <td>01-120-RKS</td>
-                <td>124.232km</td>
-                <td>Active</td>
-                <td><img class="round-img" src="icons/image.png" alt=""></td>
-                <td>Diesel</td>
-                <td>10.01.2024</td>
-                <td>10.02.2025</td>
-                <td><button class="more-options"><img src="icons/dots.svg" alt=""></button></td>
-            </tr>
-            <tr>
-                <td><img src="icons/carpng.png" alt="">Peugeot 208 2021</td>
-                <td>01-120-RKS</td>
-                <td>124.232km</td>
-                <td>Active</td>
-                <td><img class="round-img" src="icons/image.png" alt=""></td>
-                <td>Diesel</td>
-                <td>10.01.2024</td>
-                <td>10.02.2025</td>
-                <td><button class="more-options"><img src="icons/dots.svg" alt=""></button></td>
-            </tr>
-            <tr>
-                <td><img src="icons/carpng.png" alt="">Peugeot 208 2021</td>
-                <td>01-120-RKS</td>
-                <td>124.232km</td>
-                <td>Active</td>
-                <td><img class="round-img" src="icons/image.png" alt=""></td>
-                <td>Diesel</td>
-                <td>10.01.2024</td>
-                <td>10.02.2025</td>
-                <td><button class="more-options"><img src="icons/dots.svg" alt=""></button></td>
-            </tr>
-            <tr>
-                <td><img src="icons/carpng.png" alt="">Peugeot 208 2021</td>
-                <td>01-120-RKS</td>
-                <td>124.232km</td>
-                <td>Active</td>
-                <td><img class="round-img" src="icons/image.png" alt=""></td>
-                <td>Diesel</td>
-                <td>10.01.2024</td>
-                <td>10.02.2025</td>
-                <td><button class="more-options"><img src="icons/dots.svg" alt=""></button></td>
-            </tr>
-         
-        </tbody>
-    </table>
+  <app-modal #modal (carAddedEvent)="onCarAdded($event)"></app-modal>
+
+  <ul class="table-tabs">
+    <li
+      *ngFor="let tab of tabs; let i = index"
+      class="tab"
+      [class.active]="activeTab === i"
+      (click)="setActiveTab(i)"
+    >
+      {{ tab }}
+    </li>
+  </ul>
+
+  <label class="search-label">
+    <div class="search-wrapper">
+      <input type="search" placeholder="Search" />
+      <img src="icons/search.svg" alt="" />
+    </div>
+  </label>
+
+  <table class="cardatabase-table">
+    <thead>
+      <tr>
+        <td>Model</td>
+        <td>Plate number</td>
+        <td>Km</td>
+        <td>Status</td>
+        <td>Driver</td>
+        <td>Fuel</td>
+        <td>Last inspection</td>
+        <td>Next inspection</td>
+        <td></td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of carInfo">
+        <td>
+          <img [src]="item.carpng" style="width: 50px" />
+          <span>{{ item.carModel }}</span>
+        </td>
+        <td>{{ item.plateNumber }}</td>
+        <td>{{ item.km + " km" }}</td>
+        <td>{{ item.status }}</td>
+        <td>
+          <img class="round-img" [src]="item.driverpng" alt="" />
+        </td>
+        <td>{{ item.fuel }}</td>
+        <td>{{ item.lastInspection }}</td>
+        <td>{{ item.nextInspection }}</td>
+        <td>
+          <button class="more-options">
+            <img src="icons/dots.svg" alt="" />
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>

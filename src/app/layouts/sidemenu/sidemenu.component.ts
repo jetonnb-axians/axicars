@@ -8,7 +8,7 @@ import { AuthService } from '../../auth.service'; // Import AuthService
   standalone: true,
   imports: [CommonModule, RouterModule],
   templateUrl: './sidemenu.component.html',
-  styleUrls: ['./sidemenu.component.scss']
+  styleUrls: ['./sidemenu.component.scss'],
 })
 export class SidemenuComponent implements OnInit {
   isClosed = false;
@@ -18,7 +18,7 @@ export class SidemenuComponent implements OnInit {
 
   ngOnInit(): void {
     // Subscribe to the auth service to get the username
-    this.authService.userName$.subscribe(name => {
+    this.authService.userName$.subscribe((name) => {
       this.userName = name;
     });
   }

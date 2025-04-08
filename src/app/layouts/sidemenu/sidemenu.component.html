@@ -1,75 +1,113 @@
-
 <nav>
-    <div class="sidebar" [ngClass]="{ 'closed': isClosed }">
-        <!-- Logo -->
-        
-        <div class="logo">
-   
-          @if(isClosed){
-            <div class="align-icon-arrow" [ngStyle]="isClosed ? {} : {'justify-content': 'center'}"> 
-            <svg width="16" class="arrow-hover"  (click)="toggleSidebar()" height="14" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg" style="transform: rotate(180deg);">
-              <path d="M15 7.00008H1M1 7.00008L6.83333 1.16675M1 7.00008L6.83333 12.8334" stroke="black" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          }@else{
-            <div class="align-icon-arrow" [ngStyle]="isClosed ? {} : {'justify-content': 'space-between'}">  
-            
-            <a href=""><img style="padding:10px" src="https://s3-alpha-sig.figma.com/img/5076/33a6/ed223ed4437865eb9b4fc4ba17531751?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=CCB54oHBC627IU~44ShMUtvlCYwFQ-wSI2nYaOE1kMxgQyBBFGyfvp~oRNfmTPXPjnVVNP52w-JbsEL8G-N4rKGGSYl00HRFXZTeEodzUkwhUsRt-ndcjt~G72x9ISKYoAdj~Ill2TuXCydtugJgwfFv1UtMQAILayYFKlrs7GbpvhZPTzjbS6FxWX-e3ry8eqfJtqFP6HZMt6ne8ITw-HICTlaHcgQInXe4vgeFRKSrRAkr0xtcSkOL~1WKiTEdm~HHcLcHZVOTktZQKJgW~HSoxmC-NijcvGz2HpxIelIo8mSacT-Jy2EcTXvtOMXJ3lJHnVQm8hKnpW3YUtD4lw__" alt="Axians Logo">
-            </a>
-            <svg width="16" class="arrow-hover"  (click)="toggleSidebar()" height="14" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg" style="transform: rotate(0deg);">
-              <path d="M15 7.00008H1M1 7.00008L6.83333 1.16675M1 7.00008L6.83333 12.8334" stroke="black" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            </div>
-          }
-        </div>
-       
-        <div >
-     
-        </div>
-  
+  <div class="sidebar" [ngClass]="{ closed: isClosed }">
+    <!-- Logo -->
 
-    
-      
-
-        <!-- Sidebar Menu -->
-        <ul class="menu" >
-            <!-- <li [routerLink]="['/dashboard']" class="active"><img class = "dashboardicon" src="icons/dashboard.svg" alt=""> <a >Dashboard</a></li> -->
-            <!-- <li [routerLink]="['/kmreports']"><img class="kmreporticon" src="icons/kmreport.svg" alt=""><a>Km Report</a></li> -->
-            <!-- <li><img class="maintenanceicon"src="icons/maintenance.svg" alt=""><a>Maintenance History</a> </li> -->
-            <!-- <li><img class= "damageicon"src="icons/damage.svg" alt=""> <a>Damage Report</a> </li> -->
-            <!-- <li> <img class = "requesticon"src="icons/request.svg" alt=""><a>Request New Car</a></li> -->
-            <ul class="menu">
-              <li [routerLink]="['/cardatabase']" routerLinkActive="active">
-                  <img class="requesticon" src="icons/car.svg" alt="">
-                  <a>Car Database</a>
-              </li>
-              <li [routerLink]="['/carrequests']" routerLinkActive="active">
-                  <img class="requesticon" src="icons/request.svg" alt="">
-                  <a>Car Requests</a>
-              </li>
-              <li [routerLink]="['/driversdatabase']" routerLinkActive="active">
-                  <img class="requesticon" src="icons/datastorage.svg" alt="">
-                  <a>Drivers Database</a>
-              </li>
-          </ul>
-          
-               
-        </ul>
-
-        <!-- Settings -->
-        <div class="settings" [routerLink]="['/settings']" routerLinkActive="active">
-          <img class="settingsicon" src="icons/settings.svg" alt="image">
-          <a>Settings</a>
+    <div class="logo">
+      @if(isClosed){
+      <div
+        class="align-icon-arrow"
+        [ngStyle]="isClosed ? {} : { 'justify-content': 'center' }"
+      >
+        <svg
+          width="16"
+          class="arrow-hover"
+          (click)="toggleSidebar()"
+          height="14"
+          viewBox="0 0 16 14"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          style="transform: rotate(180deg)"
+        >
+          <path
+            d="M15 7.00008H1M1 7.00008L6.83333 1.16675M1 7.00008L6.83333 12.8334"
+            stroke="black"
+            stroke-width="1.2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
       </div>
-      
-
-        <!-- User Profile -->
-        <div class="user-profile">
-          <img src="icons/pfp.jfif" alt="User">
-          <span *ngIf="userName; else guest">{{ userName }}</span>
-          <ng-template #guest><span>Guest</span></ng-template>
-          <img id="logouticon" src="icons/logout.svg" alt="Logout" routerLink="/auth/login" style="cursor: pointer;">
-        </div>
-        
+      }@else{
+      <div
+        class="align-icon-arrow"
+        [ngStyle]="isClosed ? {} : { 'justify-content': 'space-between' }"
+      >
+        <a href=""
+          ><img
+            style="padding: 10px"
+            src="https://s3-alpha-sig.figma.com/img/5076/33a6/ed223ed4437865eb9b4fc4ba17531751?Expires=1745193600&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=hsOtcO9T~93o~nv0562wEc2ZVnqs3yZ4MojSrGX7lJJcqTXlOmywEvpBFjPArLTgWNACfhLSLlMjcske~y6InsMBLFcd5nbRA7yhwkmreSubkopNr99K2NxVzVHR98a6fksXMrCUJhECD5AKV7rBmYc0yxbvvzgADNkewbucILGOKf3GLumTLN1~GmZPqyU7dk5YhWOgh4hiUul9~69AzBiv954PxHsYkBKz4VATvsya32VrtECD8czRTZfaO~U11DvsaqBbXCLMxOU3tUGM~6Qi8MGj~dnezq-TQam21JljNdapUn4cKg~t9bDdX1hCqd763NrPVUC81iIzkKAfuA__"
+            alt="Axians Logo"
+          />
+        </a>
+        <svg
+          width="16"
+          class="arrow-hover"
+          (click)="toggleSidebar()"
+          height="14"
+          viewBox="0 0 16 14"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          style="transform: rotate(0deg)"
+        >
+          <path
+            d="M15 7.00008H1M1 7.00008L6.83333 1.16675M1 7.00008L6.83333 12.8334"
+            stroke="black"
+            stroke-width="1.2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </div>
+      }
     </div>
+
+    <div></div>
+
+    <!-- Sidebar Menu -->
+    <ul class="menu">
+      <!-- <li [routerLink]="['/dashboard']" class="active"><img class = "dashboardicon" src="icons/dashboard.svg" alt=""> <a >Dashboard</a></li> -->
+      <!-- <li [routerLink]="['/kmreports']"><img class="kmreporticon" src="icons/kmreport.svg" alt=""><a>Km Report</a></li> -->
+      <!-- <li><img class="maintenanceicon"src="icons/maintenance.svg" alt=""><a>Maintenance History</a> </li> -->
+      <!-- <li><img class= "damageicon"src="icons/damage.svg" alt=""> <a>Damage Report</a> </li> -->
+      <!-- <li> <img class = "requesticon"src="icons/request.svg" alt=""><a>Request New Car</a></li> -->
+      <ul class="menu">
+        <li [routerLink]="['/cardatabase']" routerLinkActive="active">
+          <img class="requesticon" src="icons/car.svg" alt="" />
+          <a>Car Database</a>
+        </li>
+        <li [routerLink]="['/carrequests']" routerLinkActive="active">
+          <img class="requesticon" src="icons/request.svg" alt="" />
+          <a>Car Requests</a>
+        </li>
+        <li [routerLink]="['/driversdatabase']" routerLinkActive="active">
+          <img class="requesticon" src="icons/datastorage.svg" alt="" />
+          <a>Drivers Database</a>
+        </li>
+      </ul>
+    </ul>
+
+    <!-- Settings -->
+    <div
+      class="settings"
+      [routerLink]="['/settings']"
+      routerLinkActive="active"
+    >
+      <img class="settingsicon" src="icons/settings.svg" alt="image" />
+      <a>Settings</a>
+    </div>
+
+    <!-- User Profile -->
+    <div class="user-profile">
+      <img src="icons/pfp.jfif" alt="User" />
+      <span *ngIf="userName; else guest">{{ userName }}</span>
+      <ng-template #guest><span>Guest</span></ng-template>
+      <img
+        id="logouticon"
+        src="icons/logout.svg"
+        alt="Logout"
+        routerLink="/auth/login"
+        style="cursor: pointer"
+      />
+    </div>
+  </div>
 </nav>

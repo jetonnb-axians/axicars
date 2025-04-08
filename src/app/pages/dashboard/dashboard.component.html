@@ -1,90 +1,85 @@
-
 <div class="dashboard">
+  <div class="boxes">
+    <div class="box">
+      <h3 class="box-title"><img src="icons/modelicon.svg" alt="" />Model</h3>
+      <h2 class="box-content">Peugeot 208 2021</h2>
+    </div>
 
-    <div class="boxes">
-      <div class="box">
-        <h3 class="box-title"><img src="icons/modelicon.svg" alt="">Model</h3>
-        <h2 class="box-content">Peugeot 208 2021</h2>
-      </div>
-    
-      <div class="box">
-        <h3 class="box-title"><img src="icons/licenseplate.svg" alt="">Plate Number</h3>
-        <h2 class="box-content">01-120-RKS</h2>
-      </div>
-    
-      <div class="box">
-        <h3 class="box-title"> <img src="icons/fuel.svg" alt="">Fuel</h3>
-        <h2 class="box-content">Diesel</h2>
-      </div>
-    
-      <div class="box">
-        <h3 class="box-title"> <img src="icons/speedometer.svg" alt="">Km</h3>
-        <h2 class="box-content">10.01.2024</h2>
-      </div>
+    <div class="box">
+      <h3 class="box-title">
+        <img src="icons/licenseplate.svg" alt="" />Plate Number
+      </h3>
+      <h2 class="box-content">01-120-RKS</h2>
     </div>
-  
-    <div class="map">
-  
+
+    <div class="box">
+      <h3 class="box-title"><img src="icons/fuel.svg" alt="" />Fuel</h3>
+      <h2 class="box-content">Diesel</h2>
     </div>
-  
-    <div class="table-container">
+
+    <div class="box">
+      <h3 class="box-title"><img src="icons/speedometer.svg" alt="" />Km</h3>
+      <h2 class="box-content">10.01.2024</h2>
+    </div>
+  </div>
+
+  <div class="map"></div>
+
+  <div class="table-container">
     <ul class="table-tabs">
-        <li class="tab">KM Report</li>
-        <li class="tab">Maintenance history</li>
-        <li class="tab">Damage Report</li>
+      <li class="tab">KM Report</li>
+      <li class="tab">Maintenance history</li>
+      <li class="tab">Damage Report</li>
     </ul>
-  
-   
+
     <div class="add-car-kmreport">
       <div class="date-button">
-          <label for="from-date">From:</label>
-          <input type="date" id="from-date">
-  
-          <label for="to-date">To:</label>
-          <input type="date" id="to-date">
+        <label for="from-date">From:</label>
+        <input type="date" id="from-date" />
+
+        <label for="to-date">To:</label>
+        <input type="date" id="to-date" />
       </div>
       <button class="add-button">Add Car Km Report</button>
-  </div>
+    </div>
     <table class="kmreport-table">
-        <thead>
-            <tr>
-                <td>Driver</td>
-                <td>Car Pickup</td>
-                <td>Before Car Pickup</td>
-                <td>After Car Pickup</td>
-                <th></th>
-            </tr>
-        </thead>
-         
-        <tbody>
-            <tr>
-                <td>Jeton</td>
-                <td>21.02.2024</td>
-                <td>50.000 km</td>
-                <td>65.000 km</td>
-                <td><button class="more-options">...</button></td>
-            </tr>
-            <tr>
-                <td>Jeton</td>
-                <td>20.02.2024</td>
-                <td>50.000 km</td>
-                <td>65.000 km</td>
-                <td><button class="more-options">...</button></td>
-            </tr>
-            <tr>
-                <td>Jeton</td>
-                <td>19.02.2024</td>
-                <td>19.02.2024</td>
-                <td>65.000 km</td>
-                <td><button class="more-options">...</button></td>
-            </tr>
-        </tbody>
+      <thead>
+        <tr>
+          <td>Driver</td>
+          <td>Car Pickup</td>
+          <td>Before Car Pickup</td>
+          <td>After Car Pickup</td>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>Jeton</td>
+          <td>21.02.2024</td>
+          <td>50.000 km</td>
+          <td>65.000 km</td>
+          <td><button class="more-options">...</button></td>
+        </tr>
+        <tr>
+          <td>Jeton</td>
+          <td>20.02.2024</td>
+          <td>50.000 km</td>
+          <td>65.000 km</td>
+          <td><button class="more-options">...</button></td>
+        </tr>
+        <tr>
+          <td>Jeton</td>
+          <td>19.02.2024</td>
+          <td>19.02.2024</td>
+          <td>65.000 km</td>
+          <td><button class="more-options">...</button></td>
+        </tr>
+      </tbody>
     </table>
-    
-    
-    
+
     <div class="view-all">
       <button routerLink="/kmreports" class="view-all-button">View All</button>
+    </div>
   </div>
 </div>
-

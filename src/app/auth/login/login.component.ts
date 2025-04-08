@@ -1,5 +1,10 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../auth.service';
 import { CommonModule } from '@angular/common';
@@ -9,7 +14,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule, RouterModule, ReactiveFormsModule],
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
   fb = inject(FormBuilder);
@@ -18,7 +23,7 @@ export class LoginComponent implements OnInit {
 
   userForm: FormGroup = this.fb.nonNullable.group({
     email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required, Validators.minLength(6)]]
+    password: ['', [Validators.required, Validators.minLength(6)]],
   });
 
   errorMessage: string | null = null;
@@ -29,20 +34,20 @@ export class LoginComponent implements OnInit {
 
   onSubmit(): void {
     if (this.userForm.invalid) {
-      this.errorMessage = "Email and password are required"; 
+      this.errorMessage = 'Email and password are required';
       return;
     }
-  
+
     const { email, password } = this.userForm.getRawValue();
-  
+
     this.authService.login(email, password).subscribe({
       next: () => {
         this.router.navigateByUrl('/'); // Redirect to home or dashboard after login
       },
       error: (error) => {
         console.error('Login failed:', error);
-        this.errorMessage = "Wrong email or password"; 
-      }
+        this.errorMessage = 'Wrong email or password';
+      },
     });
   }
 }

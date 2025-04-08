@@ -1,62 +1,67 @@
 <div class="table-container">
-    <div><h1>Driver's Database</h1>
-        <button class="add-button"><img src="icons/plussign.svg" alt="">Add New Driver</button>
+  <div>
+    <h1>Driver's Database</h1>
+    <button class="add-button">
+      <img src="icons/plussign.svg" alt="" />Add New Driver
+    </button>
+  </div>
+  <ul class="table-tabs">
+    <li
+      *ngFor="let tab of tabs; let i = index"
+      class="tab"
+      [class.active]="activeTab === i"
+      (click)="setActiveTab(i)"
+    >
+      {{ tab }}
+    </li>
+  </ul>
 
+  <label class="search-label">
+    <div class="search-wrapper">
+      <input type="search" placeholder="Search" />
+      <img src="icons/search.svg" alt="" />
     </div>
-    <ul class="table-tabs">
-        <li 
-            *ngFor="let tab of tabs; let i = index" 
-            class="tab" 
-            [class.active]="activeTab === i" 
-            (click)="setActiveTab(i)">
-            {{ tab }}
-        </li>
-    </ul>
-    
-    <label class="search-label">
-        <div class="search-wrapper">
-            <input type="search" placeholder="Search">
-            <img src="icons/search.svg" alt="">
-        </div>
-    </label>
-    
-    <table class="carrequest-table">
-        <thead>
-            <tr>
-                <td>Driver</td>
-                <td>Assigned car</td>
-                <td>Plate Number</td>            
-                <td></td>
-            </tr>
-        </thead>
-        <tbody>
-            @for (item of driversInfo; track $index) {
-            <tr>
-                <td>
-                    <div style="display:flex; align-items:center;">
-                       <img [src]="item.driverpng" width="30px" height="30px" alt="">
-                       <span>
-                           {{item.driversName}}
-                       </span>
-                   </div>
-                </td>
-                <td >
-                    <div style="display:flex; align-items:center;">
-                        <img src="icons/carpng.png" width="30px" height="30px" alt="">
-                        <span>
-                            {{item.carModel}}
-                        </span>
-                    </div>
-                </td>
-                <td>
-                    {{item.plateNumber}}
-                </td>
-               
-                <td><button class="more-options"><img src="icons/dots.svg" alt=""></button></td>
-            </tr>
-        }
-           
-        
-        </tbody>
-    </table>
+  </label>
+
+  <table class="carrequest-table">
+    <thead>
+      <tr>
+        <td>Driver</td>
+        <td>Assigned car</td>
+        <td>Plate Number</td>
+        <td></td>
+      </tr>
+    </thead>
+    <tbody>
+      @for (item of driversInfo; track $index) {
+      <tr>
+        <td>
+          <div style="display: flex; align-items: center">
+            <img [src]="item.driverpng" width="30px" height="30px" alt="" />
+            <span>
+              {{ item.driversName }}
+            </span>
+          </div>
+        </td>
+        <td>
+          <div style="display: flex; align-items: center">
+            <img src="icons/carpng.png" width="30px" height="30px" alt="" />
+            <span>
+              {{ item.carModel }}
+            </span>
+          </div>
+        </td>
+        <td>
+          {{ item.plateNumber }}
+        </td>
+
+        <td>
+          <button class="more-options">
+            <img src="icons/dots.svg" alt="" />
+          </button>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
 </div>

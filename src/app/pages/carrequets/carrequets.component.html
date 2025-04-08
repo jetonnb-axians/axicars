@@ -1,99 +1,134 @@
 <div class="table-container">
-    <div><h1>Car Requests</h1>
+  <div><h1>Car Requests</h1></div>
+  <ul class="table-tabs">
+    <li
+      *ngFor="let tab of tabs; let i = index"
+      class="tab"
+      [class.active]="activeTab === i"
+      (click)="setActiveTab(i)"
+    >
+      {{ tab }}
+    </li>
+  </ul>
+
+  <label class="search-label">
+    <div class="search-wrapper">
+      <input type="search" placeholder="Search" />
+      <img src="icons/search.svg" alt="" />
     </div>
-    <ul class="table-tabs">
-        <li 
-            *ngFor="let tab of tabs; let i = index" 
-            class="tab" 
-            [class.active]="activeTab === i" 
-            (click)="setActiveTab(i)">
-            {{ tab }}
-        </li>
-    </ul>
-    
-    <label class="search-label">
-        <div class="search-wrapper">
-            <input type="search" placeholder="Search">
-            <img src="icons/search.svg" alt="">
-        </div>
-    </label>
-    
-    <table class="carrequest-table">
-        <thead>
-            <tr>
-                <td>Model</td>
-                <td>Plate number</td>
-                <td>Requested by</td>
-                <td>Request Status</td>
-             
-                <td></td>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><img src="icons/carpng.png" alt="">Peugeot 208 2021</td>
-                <td>01-120-RKS</td>
-                <td><img class="round-img" src="icons/requestperson.png" alt=""></td>
-                <td>Active</td>
-                <td><button class="more-options"><img src="icons/dots.svg" alt=""></button></td>
-            </tr>
-            <tr>
-                <td><img src="icons/carpng.png" alt="">Peugeot 208 2021</td>
-                <td>01-120-RKS</td>
-                <td><img class="round-img" src="icons/requestperson.png" alt=""></td>
-                <td>Active</td>
-                <td><button class="more-options"><img src="icons/dots.svg" alt=""></button></td>
-            </tr>
-            <tr>
-                <td><img src="icons/carpng.png" alt="">Peugeot 208 2021</td>
-                <td>01-120-RKS</td>
-                <td><img class="round-img" src="icons/requestperson.png" alt=""></td>
-                <td>Active</td>
-                <td><button class="more-options"><img src="icons/dots.svg" alt=""></button></td>
-            </tr>
-            <tr>
-                <td><img src="icons/carpng.png" alt="">Peugeot 208 2021</td>
-                <td>01-120-RKS</td>
-                <td><img class="round-img" src="icons/requestperson.png" alt=""></td>
-                <td>Active</td>
-                <td><button class="more-options"><img src="icons/dots.svg" alt=""></button></td>
-            </tr>
-            <tr>
-                <td><img src="icons/carpng.png" alt="">Peugeot 208 2021</td>
-                <td>01-120-RKS</td>
-                <td><img class="round-img" src="icons/requestperson.png" alt=""></td>
-                <td>Active</td>
-                <td><button class="more-options"><img src="icons/dots.svg" alt=""></button></td>
-            </tr>
-            <tr>
-                <td><img src="icons/carpng.png" alt="">Peugeot 208 2021</td>
-                <td>01-120-RKS</td>
-                <td><img class="round-img" src="icons/requestperson.png" alt=""></td>
-                <td>Active</td>
-                <td><button class="more-options"><img src="icons/dots.svg" alt=""></button></td>
-            </tr>
-            <tr>
-                <td><img src="icons/carpng.png" alt="">Peugeot 208 2021</td>
-                <td>01-120-RKS</td>
-                <td><img class="round-img" src="icons/requestperson.png" alt=""></td>
-                <td>Active</td>
-                <td><button class="more-options"><img src="icons/dots.svg" alt=""></button></td>
-            </tr>
-            <tr>
-                <td><img src="icons/carpng.png" alt="">Peugeot 208 2021</td>
-                <td>01-120-RKS</td>
-                <td><img class="round-img" src="icons/requestperson.png" alt=""></td>
-                <td>Active</td>
-                <td><button class="more-options"><img src="icons/dots.svg" alt=""></button></td>
-            </tr>
-            <tr>
-                <td><img src="icons/carpng.png" alt="">Peugeot 208 2021</td>
-                <td>01-120-RKS</td>
-                <td><img class="round-img" src="icons/requestperson.png" alt=""></td>
-                <td>Active</td>
-                <td><button class="more-options"><img src="icons/dots.svg" alt=""></button></td>
-            </tr>
-         
-        </tbody>
-    </table>
+  </label>
+
+  <table class="carrequest-table">
+    <thead>
+      <tr>
+        <td>Model</td>
+        <td>Plate number</td>
+        <td>Requested by</td>
+        <td>Request Status</td>
+
+        <td></td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><img src="icons/carpng.png" alt="" />Peugeot 208 2021</td>
+        <td>01-120-RKS</td>
+        <td><img class="round-img" src="icons/requestperson.png" alt="" /></td>
+        <td>Active</td>
+        <td>
+          <button class="more-options">
+            <img src="icons/dots.svg" alt="" />
+          </button>
+        </td>
+      </tr>
+      <tr>
+        <td><img src="icons/carpng.png" alt="" />Peugeot 208 2021</td>
+        <td>01-120-RKS</td>
+        <td><img class="round-img" src="icons/requestperson.png" alt="" /></td>
+        <td>Active</td>
+        <td>
+          <button class="more-options">
+            <img src="icons/dots.svg" alt="" />
+          </button>
+        </td>
+      </tr>
+      <tr>
+        <td><img src="icons/carpng.png" alt="" />Peugeot 208 2021</td>
+        <td>01-120-RKS</td>
+        <td><img class="round-img" src="icons/requestperson.png" alt="" /></td>
+        <td>Active</td>
+        <td>
+          <button class="more-options">
+            <img src="icons/dots.svg" alt="" />
+          </button>
+        </td>
+      </tr>
+      <tr>
+        <td><img src="icons/carpng.png" alt="" />Peugeot 208 2021</td>
+        <td>01-120-RKS</td>
+        <td><img class="round-img" src="icons/requestperson.png" alt="" /></td>
+        <td>Active</td>
+        <td>
+          <button class="more-options">
+            <img src="icons/dots.svg" alt="" />
+          </button>
+        </td>
+      </tr>
+      <tr>
+        <td><img src="icons/carpng.png" alt="" />Peugeot 208 2021</td>
+        <td>01-120-RKS</td>
+        <td><img class="round-img" src="icons/requestperson.png" alt="" /></td>
+        <td>Active</td>
+        <td>
+          <button class="more-options">
+            <img src="icons/dots.svg" alt="" />
+          </button>
+        </td>
+      </tr>
+      <tr>
+        <td><img src="icons/carpng.png" alt="" />Peugeot 208 2021</td>
+        <td>01-120-RKS</td>
+        <td><img class="round-img" src="icons/requestperson.png" alt="" /></td>
+        <td>Active</td>
+        <td>
+          <button class="more-options">
+            <img src="icons/dots.svg" alt="" />
+          </button>
+        </td>
+      </tr>
+      <tr>
+        <td><img src="icons/carpng.png" alt="" />Peugeot 208 2021</td>
+        <td>01-120-RKS</td>
+        <td><img class="round-img" src="icons/requestperson.png" alt="" /></td>
+        <td>Active</td>
+        <td>
+          <button class="more-options">
+            <img src="icons/dots.svg" alt="" />
+          </button>
+        </td>
+      </tr>
+      <tr>
+        <td><img src="icons/carpng.png" alt="" />Peugeot 208 2021</td>
+        <td>01-120-RKS</td>
+        <td><img class="round-img" src="icons/requestperson.png" alt="" /></td>
+        <td>Active</td>
+        <td>
+          <button class="more-options">
+            <img src="icons/dots.svg" alt="" />
+          </button>
+        </td>
+      </tr>
+      <tr>
+        <td><img src="icons/carpng.png" alt="" />Peugeot 208 2021</td>
+        <td>01-120-RKS</td>
+        <td><img class="round-img" src="icons/requestperson.png" alt="" /></td>
+        <td>Active</td>
+        <td>
+          <button class="more-options">
+            <img src="icons/dots.svg" alt="" />
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
