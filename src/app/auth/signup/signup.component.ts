@@ -6,7 +6,7 @@ import {
   Validators,
   ReactiveFormsModule,
 } from '@angular/forms';
-import { AuthService } from '../../auth.service';
+import { AuthService } from '../../services/auth.service';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -24,7 +24,7 @@ export class SignupComponent {
   userForm: FormGroup = this.fb.group({
     email: ['', Validators.required],
     username: ['', Validators.required],
-    password: ['', [Validators.required, Validators.minLength(8)]], // Min 8 characters
+    password: ['', [Validators.required, Validators.minLength(8)]],
   });
 
   errorMessage: string | null = null;
@@ -39,10 +39,8 @@ export class SignupComponent {
   }
 
   onSubmit(): void {
-    // Reset error message
     this.errorMessage = null;
 
-    // First, check if any fields are empty
     if (
       this.userForm.get('email')?.invalid ||
       this.userForm.get('username')?.invalid
@@ -51,13 +49,11 @@ export class SignupComponent {
       return;
     }
 
-    // Then, check for password length
     if (this.passwordInvalid) {
       this.errorMessage = 'Password must be at least 8 characters';
       return;
     }
 
-    // If everything is valid, proceed with signup
     const rawForm = this.userForm.getRawValue();
     console.log('rawForm', rawForm);
 

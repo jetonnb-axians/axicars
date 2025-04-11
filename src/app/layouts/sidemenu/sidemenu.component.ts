@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { AuthService } from '../../auth.service'; // Import AuthService
+import { AuthService } from '../../services/auth.service'; // Import AuthService
 
 @Component({
   selector: 'app-sidemenu',

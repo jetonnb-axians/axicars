@@ -1,0 +1,16 @@
+{
+  "folders": [
+	{
+		"path": "../../JavaScript - Cacttus"
+	},
+	{
+		"path": "../../Ushtrime-Objects"
+	},
+	{
+		"path": "../../simple-shopping-list-project"
+	}
+],
+  "settings": {
+    "liveServer.settings.multiRootWorkspaceName": "simple-shopping-list-project"
+  }
+}

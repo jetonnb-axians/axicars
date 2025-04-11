@@ -9,14 +9,11 @@
   <app-modal #modal (carAddedEvent)="onCarAdded($event)"></app-modal>
 
   <ul class="table-tabs">
-    <li
-      *ngFor="let tab of tabs; let i = index"
-      class="tab"
-      [class.active]="activeTab === i"
-      (click)="setActiveTab(i)"
-    >
+    @for (tab of tabs; track tab; let i = $index) {
+    <li class="tab" [class.active]="activeTab === i" (click)="setActiveTab(i)">
       {{ tab }}
     </li>
+    }
   </ul>
 
   <label class="search-label">
@@ -41,7 +38,8 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of carInfo">
+      @for (item of filteredCars; track carInfo) {
+      <tr>
         <td>
           <img [src]="item.carpng" style="width: 50px" />
           <span>{{ item.carModel }}</span>
@@ -56,11 +54,25 @@
         <td>{{ item.lastInspection }}</td>
         <td>{{ item.nextInspection }}</td>
         <td>
-          <button class="more-options">
-            <img src="icons/dots.svg" alt="" />
-          </button>
+          <div
+            class="more-options"
+            (click)="toggleDropdown(item); $event.stopPropagation()"
+          >
+            <img src="icons/dots.svg" alt="More" />
+            <div class="dropdown-menu" *ngIf="item.showDropdown">
+              <div class="dropdown-item">
+                <img src="icons/edit.svg" alt="Edit" />
+                <span>Edit car</span>
+              </div>
+              <div class="dropdown-item delete">
+                <img src="icons/delete.svg" alt="Delete" />
+                <span>Delete car</span>
+              </div>
+            </div>
+          </div>
         </td>
       </tr>
+      }
     </tbody>
   </table>
 </div>
