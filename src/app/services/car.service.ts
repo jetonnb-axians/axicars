@@ -1,26 +1,33 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import {
   Firestore,
   collection,
   addDoc,
-  collectionData,
+  updateDoc,
+  doc,
 } from '@angular/fire/firestore';
-import { CollectionReference, DocumentData, getDoc } from 'firebase/firestore';
+import { collectionData } from '@angular/fire/firestore';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({
+  providedIn: 'root',
+})
 export class CarService {
-  private carCollection: CollectionReference<DocumentData>;
+  constructor(private firestore: Firestore) {}
 
-  constructor(private firestore: Firestore) {
-    this.carCollection = collection(this.firestore, 'cars');
-    console.log('thisss', this.carCollection);
-  }
+  carInfo = signal<any[]>([]);
 
   addCar(car: any) {
-    return addDoc(this.carCollection, car);
+    const carRef = collection(this.firestore, 'cars');
+    return addDoc(carRef, car);
+  }
+
+  updateCar(carId: string, updatedData: any) {
+    const carDoc = doc(this.firestore, `cars/${carId}`);
+    return updateDoc(carDoc, updatedData);
   }
 
   getCars() {
-    return collectionData(this.carCollection);
+    const carRef = collection(this.firestore, 'cars');
+    return collectionData(carRef, { idField: 'id' });
   }
 }

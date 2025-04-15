@@ -6,7 +6,11 @@
     </button>
   </div>
 
-  <app-modal #modal (carAddedEvent)="onCarAdded($event)"></app-modal>
+  <app-modal
+    #modal
+    (carAddedEvent)="onCarAdded($event)"
+    (carUpdatedEvent)="onCarUpdated($event)"
+  ></app-modal>
 
   <ul class="table-tabs">
     @for (tab of tabs; track tab; let i = $index) {
@@ -41,7 +45,7 @@
       @for (item of filteredCars; track carInfo) {
       <tr>
         <td>
-          <img [src]="item.carpng" style="width: 50px" />
+          <img [src]="item.carPng" style="width: 30px" />
           <span>{{ item.carModel }}</span>
         </td>
         <td>{{ item.plateNumber }}</td>
@@ -54,13 +58,11 @@
         <td>{{ item.lastInspection }}</td>
         <td>{{ item.nextInspection }}</td>
         <td>
-          <div
-            class="more-options"
-            (click)="toggleDropdown(item); $event.stopPropagation()"
-          >
+          <div class="more-options" (click)="toggleDropdown(item)">
             <img src="icons/dots.svg" alt="More" />
-            <div class="dropdown-menu" *ngIf="item.showDropdown">
-              <div class="dropdown-item">
+            @if(item.showDropdown) {
+            <div class="dropdown-menu">
+              <div class="dropdown-item" (click)="openModal(item)">
                 <img src="icons/edit.svg" alt="Edit" />
                 <span>Edit car</span>
               </div>
@@ -69,6 +71,7 @@
                 <span>Delete car</span>
               </div>
             </div>
+            }
           </div>
         </td>
       </tr>

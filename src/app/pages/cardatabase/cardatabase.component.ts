@@ -1,9 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
-import { CarService } from '../../services/car.service'; // adjust path if necessary
+import { CarService } from '../../services/car.service';
 import { ModalComponent } from '../modal/modal.component';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { ElementRef, HostListener } from '@angular/core';
+import { ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-cardatabase',
@@ -30,13 +30,17 @@ export class CardatabaseComponent {
     });
   }
 
-  openModal() {
-    this.modalComponent.openModal();
+  openModal(carObject?: any) {
+    if (carObject) {
+      this.modalComponent.carToEdit = carObject;
+      this.modalComponent.openModal(carObject);
+    } else {
+      this.modalComponent.openModal();
+    }
   }
 
   onCarAdded(car: any) {
     this.carInfo.push(car);
-
     this.carService
       .addCar(car)
       .then(() => {
@@ -47,10 +51,15 @@ export class CardatabaseComponent {
       });
   }
 
+  onCarUpdated(updatedCar: any) {
+    const index = this.carInfo.findIndex((car) => car.id === updatedCar.id);
+    if (index !== -1) {
+      this.carInfo[index] = updatedCar;
+    }
+  }
+
   setActiveTab(index: number): void {
     this.activeTab = index;
-
-    //filtro listen e this.carInfo dhe shfaqi te dhenat ne tabel
   }
 
   get filteredCars(): any[] {
@@ -66,7 +75,7 @@ export class CardatabaseComponent {
   toggleDropdown(car: any) {
     this.filteredCars.forEach((c) => {
       if (c !== car) {
-        c.showDropdown = false; // Close others
+        c.showDropdown = false;
       }
     });
     car.showDropdown = !car.showDropdown;

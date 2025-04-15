@@ -3,104 +3,136 @@
     <span class="close" (click)="closeModal()">&times;</span>
 
     <div class="title">
-      <h2>Add new car</h2>
-      <p>Please fill out form to add new car</p>
+      <h2>{{ isEditMode ? "Edit car" : "Add new car" }}</h2>
+      <p>Please fill out form to {{ isEditMode ? "edit" : "add" }} the car</p>
     </div>
 
-    <div class="container">
-      @if (fileData) {
-      <table class="added-car">
-        <tr>
-          <td>
-            <img
-              *ngIf="filePreview"
-              [src]="filePreview"
-              alt="Selected Image"
-              width="50"
-            />
-            {{ fileName }}
-            <p style="color: gray">
-              File Size: {{ (fileData.size / 1024 / 1024).toFixed(2) }} MB
-            </p>
-            <span class="close" (click)="removeFile()">&times;</span>
-          </td>
-        </tr>
-      </table>
-      } @else {
-      <label class="upload-box">
-        <img src="icons/uploud.svg" alt="Upload Icon" />
-        <div class="upload-text">
-          Upload picture<br />
-          <small>Max file size 5mb</small>
-        </div>
-        <input type="file" (change)="onFileSelected($event)" />
-      </label>
-      }
+    <form [formGroup]="carForm" (ngSubmit)="addCar()">
+      <div class="container">
+        @if (fileData || filePreview) {
+        <table class="added-car">
+          <tr>
+            <td>
+              <img
+                *ngIf="filePreview"
+                [src]="filePreview"
+                alt="Selected Image"
+                width="50"
+              />
+              {{ fileName }}
+              <p style="color: gray">
+                File Size:
+                {{ fileData ? (fileData.size / 1024 / 1024).toFixed(2) : 0 }} MB
+              </p>
+              <span class="close" (click)="removeFile()">&times;</span>
+            </td>
+          </tr>
+        </table>
+        } @else {
+        <label class="upload-box">
+          <img src="icons/uploud.svg" alt="Upload Icon" />
+          <div class="upload-text">
+            Upload picture<br />
+            <small>Max file size 5mb</small>
+          </div>
+          <input type="file" (change)="onFileSelected($event)" />
+        </label>
+        }
 
-      <div class="form-grid">
-        <div class="column">
-          <div class="input-group">
-            <div class="input-group-one">
-              <div class="input-form">
-                <label for="model">Model</label>
-                <input type="text" id="model" required />
+        <div class="form-grid">
+          <div class="column">
+            <div class="input-group">
+              <div class="input-group-one">
+                <div class="input-form">
+                  <label for="model">Model</label>
+                  <input
+                    type="text"
+                    id="model"
+                    formControlName="carModel"
+                    required
+                  />
+                </div>
+                <div class="input-form">
+                  <label for="driver">Driver</label>
+                  <select id="driver" formControlName="driversName" required>
+                    <option value="" selected disabled hidden></option>
+                    <option value="Jetoni">Jetoni</option>
+                    <option value="Rexha">Rexha</option>
+                    <option value="Fidani">Fidani</option>
+                  </select>
+                </div>
               </div>
-              <div class="input-form">
-                <label for="driver">Driver</label>
-                <select id="driver" required>
-                  <option value="" selected disabled hidden></option>
-                  <option value="Jetoni">Jetoni</option>
-                  <option value="Rexha">Rexha</option>
-                  <option value="Fidani">Fidani</option>
-                </select>
-              </div>
-            </div>
 
-            <div class="input-group-one">
-              <div class="input-form">
-                <label for="platenumber">Plate Number</label>
-                <input type="text" id="platenumber" required />
+              <div class="input-group-one">
+                <div class="input-form">
+                  <label for="platenumber">Plate Number</label>
+                  <input
+                    type="text"
+                    id="platenumber"
+                    formControlName="plateNumber"
+                    required
+                  />
+                </div>
+                <div class="input-form">
+                  <label for="fuel">Fuel</label>
+                  <input
+                    type="text"
+                    id="fuel"
+                    formControlName="fuel"
+                    required
+                  />
+                </div>
               </div>
-              <div class="input-form">
-                <label for="fuel">Fuel</label>
-                <input type="text" id="fuel" required />
-              </div>
-            </div>
 
-            <div class="input-group-one">
-              <div class="input-form">
-                <label for="km">Km</label>
-                <input type="text" id="km" required />
+              <div class="input-group-one">
+                <div class="input-form">
+                  <label for="km">Km</label>
+                  <input type="text" id="km" formControlName="km" required />
+                </div>
+                <div class="input-form">
+                  <label for="lastinspection">Last Inspection</label>
+                  <input
+                    type="date"
+                    id="lastinspection"
+                    formControlName="lastInspection"
+                    required
+                  />
+                </div>
               </div>
-              <div class="input-form">
-                <label for="lastinspection">Last Inspection</label>
-                <input type="date" id="lastinspection" required />
-              </div>
-            </div>
 
-            <div class="input-group-one">
-              <div class="input-form">
-                <label for="status">Status</label>
-                <select id="status" required>
-                  <option value="" selected disabled hidden></option>
-                  <option value="Active">Active</option>
-                  <option value="Available">Available</option>
-                  <option value="Damaged">Damaged</option>
-                </select>
-              </div>
-              <div class="input-form">
-                <label for="nextinspection">Next inspection</label>
-                <input type="date" id="nextinspection" required />
+              <div class="input-group-one">
+                <div class="input-form">
+                  <label for="status">Status</label>
+                  <select id="status" formControlName="status" required>
+                    <option value="" selected disabled hidden></option>
+                    <option value="Active">Active</option>
+                    <option value="Available">Available</option>
+                    <option value="Damaged">Damaged</option>
+                  </select>
+                </div>
+                <div class="input-form">
+                  <label for="nextinspection">Next Inspection</label>
+                  <input
+                    type="date"
+                    id="nextinspection"
+                    formControlName="nextInspection"
+                    required
+                  />
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div class="buttons">
-        <button class="cancel-btn" (click)="closeModal()">Cancel</button>
-        <button class="add-btn" (click)="addCar()">Add car</button>
+        <div class="buttons">
+          <button class="cancel-btn" type="button" (click)="closeModal()">
+            Cancel
+          </button>
+          <button class="add-btn" type="submit">
+            {{ isEditMode ? "Update" : "Add" }} car
+          </button>
+        </div>
       </div>
-    </div>
+    </form>
   </div>
 </div>
