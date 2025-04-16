@@ -42,7 +42,7 @@
       </tr>
     </thead>
     <tbody>
-      @for (item of filteredCars; track carInfo) {
+      @for (item of filteredCars; track item.id) {
       <tr>
         <td>
           <img [src]="item.carPng" style="width: 30px" />
@@ -66,7 +66,7 @@
                 <img src="icons/edit.svg" alt="Edit" />
                 <span>Edit car</span>
               </div>
-              <div class="dropdown-item delete">
+              <div class="dropdown-item delete" (click)="deleteCar(item)">
                 <img src="icons/delete.svg" alt="Delete" />
                 <span>Delete car</span>
               </div>

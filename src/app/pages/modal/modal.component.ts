@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { CarService } from '../../services/car.service'; // adjust path
+import { CarService } from '../../services/car.service';
 
 @Component({
   selector: 'app-modal',
@@ -51,11 +51,14 @@ export class ModalComponent {
   ngOnInit() {}
 
   openModal(car?: any) {
+    console.log('Editing car:', car);
     this.isEditMode = !!car;
     this.carToEdit = car;
     if (car) {
+      this.filePreview = car.carpng || null;
+      this.fileName = car.carpng ? 'Current image' : '';
+
       this.carForm.patchValue({
-        carPng: car.carpng || this.filePreview,
         carModel: car.carModel,
         plateNumber: car.plateNumber,
         driversName: car.driversName,
@@ -67,15 +70,14 @@ export class ModalComponent {
         driverPng: car.driverPng || 'icons/driver.png',
         id: car.id,
       });
-      this.filePreview = car.carpng || null;
-      this.fileName = car.carpng ? 'Current image' : '';
+      // filePreview is already set above
+      // fileName is already set above
     } else {
       this.resetForm();
     }
 
     this.modal.nativeElement.style.display = 'block';
   }
-
   closeModal() {
     this.modal.nativeElement.style.display = 'none';
     this.resetForm();
@@ -122,8 +124,11 @@ export class ModalComponent {
       ...this.carForm.value,
       carPng: this.filePreview || this.carToEdit?.carpng,
     };
+    formData.id == null ? 1 : formData.id;
+    console.log(formData);
 
     if (this.isEditMode && formData.id) {
+      console.log('inside this isEditMode');
       const id = formData.id;
       delete formData.id;
       this.carService
@@ -136,6 +141,7 @@ export class ModalComponent {
           console.error('Update failed', err);
         });
     } else {
+      console.log('inside else');
       this.carService
         .addCar(formData)
         .then((docRef) => {

@@ -1,9 +1,8 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ElementRef, OnInit } from '@angular/core'; // Added OnInit
 import { CarService } from '../../services/car.service';
 import { ModalComponent } from '../modal/modal.component';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-cardatabase',
@@ -12,57 +11,41 @@ import { ElementRef } from '@angular/core';
   templateUrl: './cardatabase.component.html',
   styleUrls: ['./cardatabase.component.scss'],
 })
-export class CardatabaseComponent {
+export class CardatabaseComponent implements OnInit {
   @ViewChild(ModalComponent) modalComponent!: ModalComponent;
 
   tabs: string[] = ['Active Cars', 'Available Cars', 'All Cars'];
   activeTab: number = 0;
   carInfo: any[] = [];
-  dropdownOpen = false;
 
-  constructor(private carService: CarService, private eRef: ElementRef) {}
+  constructor(private carService: CarService) {}
 
   ngOnInit() {
-    this.carService.getCars().subscribe((data: any) => {
-      if (data) {
-        this.carInfo = data;
-      }
+    this.carService.getCars().subscribe((data: any[]) => {
+      this.carInfo = data ? data : [];
+      console.log('Cars loaded:', this.carInfo);
     });
   }
 
   openModal(carObject?: any) {
     if (carObject) {
-      this.modalComponent.carToEdit = carObject;
       this.modalComponent.openModal(carObject);
     } else {
       this.modalComponent.openModal();
     }
   }
 
-  onCarAdded(car: any) {
-    this.carInfo.push(car);
-    this.carService
-      .addCar(car)
-      .then(() => {
-        console.log('✅ Car saved to Firestore');
-      })
-      .catch((error) => {
-        console.error('❌ Error saving car:', error);
-      });
-  }
+  onCarAdded(car: any) {}
 
-  onCarUpdated(updatedCar: any) {
-    const index = this.carInfo.findIndex((car) => car.id === updatedCar.id);
-    if (index !== -1) {
-      this.carInfo[index] = updatedCar;
-    }
-  }
+  onCarUpdated(updatedCar: any) {}
 
   setActiveTab(index: number): void {
     this.activeTab = index;
   }
 
   get filteredCars(): any[] {
+    if (!this.carInfo) return [];
+
     if (this.activeTab === 0) {
       return this.carInfo.filter((car) => car.status === 'Active');
     } else if (this.activeTab === 1) {
@@ -73,11 +56,20 @@ export class CardatabaseComponent {
   }
 
   toggleDropdown(car: any) {
-    this.filteredCars.forEach((c) => {
+    this.carInfo.forEach((c) => {
       if (c !== car) {
         c.showDropdown = false;
       }
     });
     car.showDropdown = !car.showDropdown;
+  }
+
+  deleteCar(car: any): void {
+    {
+      const carId = car.id;
+      if (carId) {
+        this.carService.deleteCar(carId);
+      }
+    }
   }
 }

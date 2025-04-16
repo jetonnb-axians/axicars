@@ -140,21 +140,28 @@ ul {
 }
 
 .search-wrapper input {
-  padding: 8px 30px 8px 10px; /* Add space for the icon */
+  padding: 8px 30px 8px 10px;
   font-size: 13px;
   width: 100%;
 }
 
 .search-wrapper img {
   position: absolute;
-  right: 10px; /* Position the icon inside the input */
-  height: 20px; /* Adjust size of the icon */
-  width: 15px; /* Adjust size of the icon */
+  right: 10px;
+  height: 20px;
+  width: 15px;
 }
 
 .round-img {
-  width: 24px; /* Adjust the size */
-  height: 24px; /* Adjust the size */
-  border-radius: 50%; /* Makes the image round */
-  object-fit: cover; /* Ensures the image covers the area without distortion */
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.responsive-img {
+  height: 35px;
+  width: 35px;
+  background-repeat: no-repeat;
+  background-size: contain;
 }

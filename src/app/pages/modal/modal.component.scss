@@ -1,103 +1,99 @@
 .modal {
-    display: none;
-    position: fixed;
-    align-items: center;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    
-  }
-  
-  .modal-content {
-    background-color: white;
-    margin: 15% auto;
-    padding: 20px;
-    width: 98%;
-    height: 100%;
-    margin-top: 40px;
-    border-radius: 8px;
-  }
-  
-  .close {
-    float: right;
-    font-size: 24px;
-    cursor: pointer;
-  }
+  display: none;
+  position: fixed;
+  align-items: center;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
 
-  .title{
-    text-align: center;
-    margin-left: 100px;  }
+.modal-content {
+  background-color: white;
+  margin: 15% auto;
+  padding: 20px;
+  width: 98%;
+  height: 100%;
+  margin-top: 40px;
+  border-radius: 8px;
+}
 
-    .upload-box {
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    
-    .upload-box img {
-      margin-bottom: 10px; /* Adds space between the icon and text */
-      width: 30px; /* Adjust the size of the icon as needed */
-      height: auto; /* Maintains aspect ratio of the icon */
-    }
-    
-    .upload-text {
-      font-size: 16px;
-    }
-    
+.close {
+  float: right;
+  font-size: 24px;
+  cursor: pointer;
+}
 
-  .container {
-    margin: auto;
-    width: 50%;
-    padding: 10px;
-    background: white;
-    padding: 30px;
-    border-radius: 10px;
-    width: 450px;
-    text-align: center;
+.title {
+  text-align: center;
+  margin-left: 100px;
+}
+
+.upload-box {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.upload-box img {
+  margin-bottom: 10px; /* Adds space between the icon and text */
+  width: 30px; /* Adjust the size of the icon as needed */
+  height: auto; /* Maintains aspect ratio of the icon */
+}
+
+.upload-text {
+  font-size: 16px;
+}
+
+.container {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  width: 450px;
+  text-align: center;
 }
 
 .form-grid {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 .column {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 .input-group-one {
-    display: flex;
-    text-align: left;
-    gap: 50px;
+  display: flex;
+  text-align: left;
+  gap: 50px;
 }
 .input-group-one label {
-    display: flex;
-    text-align: left;
-    width: 100%;
+  display: flex;
+  text-align: left;
+  width: 100%;
 }
 
-
-
-.input-group input, .input-group select {
+.input-group input,
+.input-group select {
   width: 250px;
   padding: 10px;
   border-radius: 5px;
   border: none;
-  max-width: 500%; 
+  max-width: 500%;
   background-color: rgba(189, 189, 189, 0.198);
-  box-sizing: border-box; 
+  box-sizing: border-box;
 }
-
-
 
 .buttons {
   display: flex;
-  justify-content: flex-end; 
-  gap: 10px; 
+  justify-content: flex-end;
+  gap: 10px;
   margin-top: 15px;
   margin-right: -90px;
 }
@@ -115,10 +111,9 @@
 }
 
 .add-btn {
-  background-color: #1E72C0;
+  background-color: #1e72c0;
   color: white;
 }
-  
 
 .upload-box {
   display: flex;
@@ -154,7 +149,8 @@
   margin-bottom: 30px;
 }
 
-.added-car th, .added-car td {
+.added-car th,
+.added-car td {
   padding: 18px;
   border: 1px solid #ddd;
   text-align: left;
@@ -177,5 +173,5 @@
   margin-left: 240px;
 }
 .added-car img {
-  margin-left: -20px;  /* Adjust this value as needed */
+  margin-left: -20px; /* Adjust this value as needed */
 }
