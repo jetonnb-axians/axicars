@@ -55,8 +55,8 @@ export class ModalComponent {
     this.isEditMode = !!car;
     this.carToEdit = car;
     if (car) {
-      this.filePreview = car.carpng || null;
-      this.fileName = car.carpng ? 'Current image' : '';
+      this.filePreview = car.carPng || car.carpng || null;
+      this.fileName = car.carPng || car.carpng ? 'Current image' : '';
 
       this.carForm.patchValue({
         carModel: car.carModel,
@@ -69,9 +69,8 @@ export class ModalComponent {
         status: car.status,
         driverPng: car.driverPng || 'icons/driver.png',
         id: car.id,
+        carPng: car.carPng || car.carpng || null,
       });
-      // filePreview is already set above
-      // fileName is already set above
     } else {
       this.resetForm();
     }

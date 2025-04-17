@@ -1,16 +1,31 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
+import { AddDriverModalComponent } from '../drivers/add-driver-modal/add-driver-modal.component';
+
 @Component({
   selector: 'app-driversdatabase',
-  imports: [RouterModule, CommonModule],
+  standalone: true,
+  imports: [RouterModule, CommonModule, AddDriverModalComponent],
   templateUrl: './driversdatabase.component.html',
   styleUrl: './driversdatabase.component.scss',
 })
 export class DriversdatabaseComponent {
+  @ViewChild(AddDriverModalComponent)
+  addDriverModalComponent!: AddDriverModalComponent;
+
   tabs: string[] = ['Assigned Drivers', 'All drivers'];
   activeTab: number = 0;
+
+  showAddDriverModal = false;
+  modalIsOpen: boolean = false;
+
+  openModal() {
+    console.log('Diversdatabase...');
+    this.addDriverModalComponent?.openModal();
+    this.modalIsOpen = true;
+  }
 
   driversInfo = Array.from({ length: 9 }, () => ({
     carPng: 'icons/carpng.png',

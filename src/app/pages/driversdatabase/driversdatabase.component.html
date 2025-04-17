@@ -1,7 +1,7 @@
 <div class="table-container">
   <div>
     <h1>Driver's Database</h1>
-    <button class="add-button">
+    <button class="add-button" (click)="openModal()">
       <img src="icons/plussign.svg" alt="" />Add New Driver
     </button>
   </div>
@@ -65,3 +65,4 @@
     </tbody>
   </table>
 </div>
+<app-add-driver-modal #addDriverModalComponent></app-add-driver-modal>
