@@ -1,7 +1,14 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, inject, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  Output,
+  ViewChild,
+  inject,
+} from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
-
+import { DriverService } from '..//..//..//services/driver.service';
 @Component({
   selector: 'app-add-driver-modal',
   standalone: true,
@@ -11,6 +18,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 })
 export class AddDriverModalComponent {
   @ViewChild('modal') modal!: ElementRef;
+  @Output() driverAdded = new EventEmitter<any>();
 
   fileData: File | null = null;
   fileName: string = '';
@@ -18,6 +26,53 @@ export class AddDriverModalComponent {
 
   driverForm!: FormGroup;
   formBuilder = inject(FormBuilder);
+
+  driverService = inject(DriverService);
+
+  async onSubmit() {
+    if (!this.driverForm.valid) return;
+
+    const newDriver = {
+      driversName: `${this.driverForm.value.firstName} ${this.driverForm.value.lastName}`,
+      phoneNumber: this.driverForm.value.phoneNumber,
+      emailAddress: this.driverForm.value.emailAddress,
+      carModel: 'Peugeot 208 2021',
+      plateNumber: '01-120-RKS',
+      driverpng: this.filePreview || 'icons/driver.png',
+      status: 'All drivers',
+      showDropdown: false,
+    };
+
+    try {
+      await this.driverService.addDriver(newDriver);
+      this.driverAdded.emit(newDriver);
+      this.closeModal();
+      this.resetForm();
+    } catch (error) {
+      console.error('Error adding driver to Firestore:', error);
+    }
+  }
+
+  ngOnInit() {
+    this.driverForm = this.formBuilder.group({
+      firstName: [''],
+      lastName: [''],
+      phoneNumber: [''],
+      emailAddress: [''],
+    });
+  }
+
+  openEdit(driverObject: any | null) {
+    this.openModal();
+
+    if (driverObject) {
+      this.driverForm.patchValue(driverObject);
+      this.filePreview = driverObject.driverPng || 'icons/driver.png';
+      this.fileName = 'Uploaded';
+    } else {
+      this.resetForm();
+    }
+  }
 
   openModal() {
     console.log('Opening modal...');

@@ -1,8 +1,8 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, inject, ViewChild } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-
 import { AddDriverModalComponent } from '../drivers/add-driver-modal/add-driver-modal.component';
+import { DriverService } from '..//..//services/driver.service';
 
 @Component({
   selector: 'app-driversdatabase',
@@ -12,31 +12,37 @@ import { AddDriverModalComponent } from '../drivers/add-driver-modal/add-driver-
   styleUrl: './driversdatabase.component.scss',
 })
 export class DriversdatabaseComponent {
+  onDriverAdded($event: any) {
+    throw new Error('Method not implemented.');
+  }
   @ViewChild(AddDriverModalComponent)
   addDriverModalComponent!: AddDriverModalComponent;
 
   tabs: string[] = ['Assigned Drivers', 'All drivers'];
   activeTab: number = 0;
 
-  showAddDriverModal = false;
-  modalIsOpen: boolean = false;
+  filteredDrivers: any[] = [];
+  driverService = inject(DriverService);
 
-  openModal() {
-    console.log('Diversdatabase...');
-    this.addDriverModalComponent?.openModal();
-    this.modalIsOpen = true;
+  ngOnInit() {
+    this.driverService.getDrivers().subscribe((drivers: any[]) => {
+      this.filteredDrivers = drivers;
+    });
   }
 
-  driversInfo = Array.from({ length: 9 }, () => ({
-    carPng: 'icons/carpng.png',
-    driversName: 'Jetoni',
-    carModel: 'Peugeot 208 2021',
-    carpng: 'icons/carpng.png',
-    driverpng: 'icons/driver.png',
-    plateNumber: '01-120-RKS',
-  }));
+  openModal() {
+    this.addDriverModalComponent.openModal();
+  }
 
-  setActiveTab(index: number): void {
+  setActiveTab(index: number) {
     this.activeTab = index;
+  }
+
+  toggleDropdown(item: any) {
+    item.showDropdown = !item.showDropdown;
+  }
+
+  deleteCar(item: any) {
+    this.filteredDrivers = this.filteredDrivers.filter((d) => d !== item);
   }
 }

@@ -33,7 +33,7 @@
       </tr>
     </thead>
     <tbody>
-      @for (item of driversInfo; track $index) {
+      @for (item of filteredDrivers; track item.id) {
       <tr>
         <td>
           <div style="display: flex; align-items: center">
@@ -56,13 +56,28 @@
         </td>
 
         <td>
-          <button class="more-options">
-            <img src="icons/dots.svg" alt="" />
-          </button>
+          <div class="more-options" (click)="toggleDropdown(item)">
+            <img src="icons/dots.svg" alt="More" />
+            @if(item.showDropdown) {
+            <div class="dropdown-menu">
+              <div class="dropdown-item" (click)="openModal()">
+                <img src="icons/edit.svg" alt="Edit" />
+                <span>Edit driver</span>
+              </div>
+              <div class="dropdown-item delete" (click)="deleteCar(item)">
+                <img src="icons/delete.svg" alt="Delete" />
+                <span>Delete driver</span>
+              </div>
+            </div>
+            }
+          </div>
         </td>
       </tr>
       }
     </tbody>
   </table>
 </div>
-<app-add-driver-modal #addDriverModalComponent></app-add-driver-modal>
+<app-add-driver-modal
+  #addDriverModalComponent
+  (driverAdded)="onDriverAdded($event)"
+></app-add-driver-modal>
