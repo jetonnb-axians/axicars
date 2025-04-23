@@ -25,6 +25,7 @@ export class DriversdatabaseComponent {
   driverService = inject(DriverService);
 
   ngOnInit() {
+    // e qet ne nje metod te vecant =
     this.driverService.getDrivers().subscribe((drivers: any[]) => {
       this.filteredDrivers = drivers;
     });
@@ -37,7 +38,7 @@ export class DriversdatabaseComponent {
   setActiveTab(index: number) {
     this.activeTab = index;
   }
-
+  //Fix duplicated dropdown
   toggleDropdown(item: any) {
     item.showDropdown = !item.showDropdown;
   }
@@ -55,10 +56,11 @@ export class DriversdatabaseComponent {
           (d) => d.id !== item.id
         );
       })
-      .catch((error) => {
+      .catch((error: any) => {
         console.error('Error deleting driver:', error);
       });
   }
+
   editDriver(item: any) {
     this.addDriverModalComponent.openModal(item); // Pass driver object
   }

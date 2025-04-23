@@ -13,6 +13,7 @@
   ></app-modal>
 
   <ul class="table-tabs">
+    <!-- just (tab of tabs; track $index) and fix the other-->
     @for (tab of tabs; track tab; let i = $index) {
     <li class="tab" [class.active]="activeTab === i" (click)="setActiveTab(i)">
       {{ tab }}
