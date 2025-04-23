@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
   errorMessage: string | null = null;
 
   ngOnInit(): void {
-    this.authService.listenToAuthState(); // Ensure we listen to auth state changes
+    this.authService.listenToAuthState();
   }
 
   onSubmit(): void {
@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
 
     this.authService.login(email, password).subscribe({
       next: () => {
-        this.router.navigateByUrl('/'); // Redirect to home or dashboard after login
+        this.router.navigateByUrl('/');
       },
       error: (error) => {
         console.error('Login failed:', error);

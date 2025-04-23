@@ -165,3 +165,37 @@ ul {
   background-repeat: no-repeat;
   background-size: contain;
 }
+
+.dropdown-menu {
+  position: absolute;
+  background: #f4f4f4;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  top: 30px;
+  right: 0;
+  width: 150px;
+  z-index: 100;
+  padding: 2px;
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  padding: 5px 16px;
+  cursor: pointer;
+  color: #000;
+  transition: background 0.3s;
+}
+
+.dropdown-item img {
+  width: 16px;
+  margin-right: 10px;
+}
+
+.dropdown-item:hover {
+  background: #eaeaea;
+}
+
+.dropdown-item.delete {
+  color: #ff4d4d;
+}

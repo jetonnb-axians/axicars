@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { CarService } from '../../services/car.service';
 import { ModalComponent } from '../modal/modal.component';
 import { CommonModule } from '@angular/common';

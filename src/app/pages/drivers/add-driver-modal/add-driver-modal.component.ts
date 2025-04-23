@@ -20,6 +20,8 @@ export class AddDriverModalComponent {
   @ViewChild('modal') modal!: ElementRef;
   @Output() driverAdded = new EventEmitter<any>();
 
+  private editingDriverId: string | null = null;
+
   fileData: File | null = null;
   fileName: string = '';
   filePreview: string | ArrayBuffer | null = null;
@@ -44,12 +46,16 @@ export class AddDriverModalComponent {
     };
 
     try {
-      await this.driverService.addDriver(newDriver);
+      if (this.editingDriverId) {
+        await this.driverService.updateDriver(this.editingDriverId, newDriver);
+      } else {
+        await this.driverService.addDriver(newDriver);
+      }
+
       this.driverAdded.emit(newDriver);
       this.closeModal();
-      this.resetForm();
     } catch (error) {
-      console.error('Error adding driver to Firestore:', error);
+      console.error('Error submitting driver:', error);
     }
   }
 
@@ -74,9 +80,35 @@ export class AddDriverModalComponent {
     }
   }
 
-  openModal() {
-    console.log('Opening modal...');
-    this.modal.nativeElement.style.display = 'block';
+  openModal(driver?: any) {
+    const modalElement = this.modal.nativeElement;
+    modalElement.style.display = 'block';
+
+    if (!this.driverForm) {
+      this.driverForm = this.formBuilder.group({
+        firstName: [''],
+        lastName: [''],
+        phoneNumber: [''],
+        emailAddress: [''],
+      });
+    }
+
+    if (driver) {
+      const [firstName, lastName] = driver.driversName.split(' ');
+
+      this.driverForm.patchValue({
+        firstName,
+        lastName,
+        phoneNumber: driver.phoneNumber,
+        emailAddress: driver.emailAddress,
+      });
+
+      this.filePreview = driver.driverpng;
+      this.fileName = driver.driversName;
+      this.editingDriverId = driver.id;
+    } else {
+      this.editingDriverId = null;
+    }
   }
   closeModal() {
     this.modal.nativeElement.style.display = 'none';

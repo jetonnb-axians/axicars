@@ -60,10 +60,11 @@
             <img src="icons/dots.svg" alt="More" />
             @if(item.showDropdown) {
             <div class="dropdown-menu">
-              <div class="dropdown-item" (click)="openModal()">
+              <div class="dropdown-item" (click)="editDriver(item)">
                 <img src="icons/edit.svg" alt="Edit" />
                 <span>Edit driver</span>
               </div>
+
               <div class="dropdown-item delete" (click)="deleteCar(item)">
                 <img src="icons/delete.svg" alt="Delete" />
                 <span>Delete driver</span>

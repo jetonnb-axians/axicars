@@ -43,6 +43,23 @@ export class DriversdatabaseComponent {
   }
 
   deleteCar(item: any) {
-    this.filteredDrivers = this.filteredDrivers.filter((d) => d !== item);
+    if (!item.id) {
+      console.error('Driver ID is missing');
+      return;
+    }
+
+    this.driverService
+      .deleteDriver(item.id)
+      .then(() => {
+        this.filteredDrivers = this.filteredDrivers.filter(
+          (d) => d.id !== item.id
+        );
+      })
+      .catch((error) => {
+        console.error('Error deleting driver:', error);
+      });
+  }
+  editDriver(item: any) {
+    this.addDriverModalComponent.openModal(item); // Pass driver object
   }
 }
