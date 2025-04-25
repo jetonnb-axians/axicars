@@ -18,6 +18,7 @@
   height: 100%;
   margin-top: 40px;
   border-radius: 8px;
+  animation: slideUp 0.4s ease-out;
 }
 
 .close {
@@ -45,7 +46,19 @@
 }
 
 .upload-text {
-  font-size: 16px;
+  display: flex;
+  justify-content: space-between;
+  .content-left-side {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+  .content-right-side {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 .container {
@@ -147,6 +160,7 @@
   border-collapse: collapse;
   background: #fff;
   margin-bottom: 30px;
+  white-space: nowrap;
 }
 
 .added-car th,
@@ -170,8 +184,21 @@
 }
 
 .added-car p {
-  margin-left: 240px;
+  // margin-left: 240px;
 }
 .added-car img {
   margin-left: -20px;
+  height: 45px;
+  width: 45px;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }

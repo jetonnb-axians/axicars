@@ -13,29 +13,40 @@ h1 {
 .table-tabs {
   display: flex;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-end;
+  position: relative;
   border-bottom: 2px solid #ddd;
-  padding-bottom: 10px;
   margin-bottom: 20px;
   gap: 400px; /* Adjust spacing between tabs */
 }
 
 .tab {
+  position: relative;
   padding: 12px 20px;
   cursor: pointer;
   font-weight: bold;
   font-size: 16px;
   color: #333;
   background: transparent;
-  border-bottom: 2px solid transparent;
+  border-bottom: none;
   transition: all 0.3s ease-in-out;
+  bottom: -2px;
 }
 
-.tab:hover,
-.tab.active {
-  border-bottom: 2px solid #1e72c0;
-  color: #1e72c0;
-  font-weight: bold;
+.tab::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: -120px;
+  right: -120px;
+  height: 2px;
+  background-color: transparent;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.tab:hover::after,
+.tab.active::after {
+  background-color: #1e72c0;
 }
 
 .search-box {
