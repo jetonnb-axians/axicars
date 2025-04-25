@@ -18,7 +18,12 @@
 
   <label class="search-label">
     <div class="search-wrapper">
-      <input type="search" placeholder="Search" />
+      <input
+        #searchInput
+        type="search"
+        placeholder="Search"
+        (input)="onSearchChange(searchInput.value)"
+      />
       <img src="icons/search.svg" alt="" />
     </div>
   </label>
@@ -36,23 +41,30 @@
       @for (item of filteredDrivers; track item.id) {
       <tr>
         <td>
-          <div style="display: flex; align-items: center">
-            <img [src]="item.driverpng" width="30px" height="30px" alt="" />
+          <div style="display: flex; align-items: center; gap: 8px">
+            <img
+              [src]="item.driverpng || 'path/to/default/driver.png'"
+              alt="Driver"
+            />
             <span>
               {{ item.driversName }}
             </span>
           </div>
         </td>
         <td>
-          <div style="display: flex; align-items: center">
-            <img src="icons/carpng.png" width="30px" height="30px" alt="" />
+          @if(item.carModel) {
+          <div style="display: flex; align-items: center; gap: 8px">
+            <img src="icons/carpng.png" width="30px" height="30px" alt="Car" />
             <span>
               {{ item.carModel }}
             </span>
           </div>
+          } @else {
+          <span>-</span>
+          }
         </td>
         <td>
-          {{ item.plateNumber }}
+          {{ item.plateNumber || "-" }}
         </td>
 
         <td>
@@ -60,12 +72,18 @@
             <img src="icons/dots.svg" alt="More" />
             @if(activeDropdownId === item.id) {
             <div class="dropdown-menu">
-              <div class="dropdown-item" (click)="editDriver(item)">
+              <div
+                class="dropdown-item"
+                (click)="editDriver(item); $event.stopPropagation()"
+              >
                 <img src="icons/edit.svg" alt="Edit" />
                 <span>Edit driver</span>
               </div>
 
-              <div class="dropdown-item delete" (click)="deleteCar(item)">
+              <div
+                class="dropdown-item delete"
+                (click)="deleteDriver(item); $event.stopPropagation()"
+              >
                 <img src="icons/delete.svg" alt="Delete" />
                 <span>Delete driver</span>
               </div>
@@ -74,10 +92,17 @@
           </div>
         </td>
       </tr>
+      } @empty {
+      <tr>
+        <td colspan="4" style="text-align: center; padding: 20px">
+          No drivers found matching your criteria.
+        </td>
+      </tr>
       }
     </tbody>
   </table>
 </div>
 <app-add-driver-modal
+  #addDriverModal
   (driverAdded)="onDriverAdded($event)"
 ></app-add-driver-modal>

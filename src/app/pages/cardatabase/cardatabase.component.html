@@ -22,7 +22,12 @@
 
   <label class="search-label">
     <div class="search-wrapper">
-      <input type="search" placeholder="Search" />
+      <input
+        #searchInput
+        type="search"
+        placeholder="Search"
+        (input)="onSearchChange(searchInput.value)"
+      />
       <img src="icons/search.svg" alt="" />
     </div>
   </label>
@@ -45,34 +50,70 @@
       @for (item of filteredCars; track item.id) {
       <tr>
         <td>
-          <img [src]="item.carPng" style="width: 30px" />
+          <img
+            [src]="item.carPng"
+            style="width: 30px; margin-right: 8px; vertical-align: middle"
+          />
           <span>{{ item.carModel }}</span>
         </td>
         <td>{{ item.plateNumber }}</td>
         <td>{{ item.km + " km" }}</td>
-        <td>{{ item.status }}</td>
         <td>
-          <img class="round-img" [src]="item.driverpng" alt="" />
+          <span
+            [ngClass]="{
+              'status-active': item.status === 'Active',
+              'status-available': item.status === 'Available',
+              'status-other':
+                item.status !== 'Active' && item.status !== 'Available'
+            }"
+          >
+            {{ item.status }}
+          </span>
+        </td>
+        <td>
+          <img
+            class="round-img"
+            [src]="item.driverpng"
+            alt="Driver"
+            style="
+              width: 30px;
+              height: 30px;
+              border-radius: 50%;
+              object-fit: cover;
+            "
+          />
         </td>
         <td>{{ item.fuel }}</td>
-        <td>{{ item.lastInspection }}</td>
-        <td>{{ item.nextInspection }}</td>
+        <td>{{ item.lastInspection | date : "yyyy-MM-dd" }}</td>
+        <td>{{ item.nextInspection | date : "yyyy-MM-dd" }}</td>
         <td>
           <div class="more-options" (click)="toggleDropdown(item)">
             <img src="icons/dots.svg" alt="More" />
             @if(item.showDropdown) {
             <div class="dropdown-menu">
-              <div class="dropdown-item" (click)="openModal(item)">
+              <div
+                class="dropdown-item"
+                (click)="openModal(item); $event.stopPropagation()"
+              >
                 <img src="icons/edit.svg" alt="Edit" />
                 <span>Edit car</span>
               </div>
-              <div class="dropdown-item delete" (click)="deleteCar(item)">
+              <div
+                class="dropdown-item delete"
+                (click)="deleteCar(item); $event.stopPropagation()"
+              >
                 <img src="icons/delete.svg" alt="Delete" />
                 <span>Delete car</span>
               </div>
             </div>
             }
           </div>
+        </td>
+      </tr>
+      } @empty {
+      <tr>
+        <td colspan="9" style="text-align: center; padding: 20px">
+          No cars found matching your criteria.
         </td>
       </tr>
       }

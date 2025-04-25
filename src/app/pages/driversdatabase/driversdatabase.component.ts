@@ -1,29 +1,25 @@
-import { Component, inject, ViewChild } from '@angular/core';
+import { Component, inject, ViewChild, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AddDriverModalComponent } from '../drivers/add-driver-modal/add-driver-modal.component';
-import { DriverService } from '..//..//services/driver.service';
+import { DriverService } from '../../services/driver.service';
 
 @Component({
   selector: 'app-driversdatabase',
   standalone: true,
   imports: [RouterModule, CommonModule, AddDriverModalComponent],
   templateUrl: './driversdatabase.component.html',
-  styleUrl: './driversdatabase.component.scss',
+  styleUrls: ['./driversdatabase.component.scss'],
 })
-export class DriversdatabaseComponent {
-  onDriverAdded($event: any) {
-    throw new Error('Method not implemented.');
-  }
+export class DriversdatabaseComponent implements OnInit {
   @ViewChild(AddDriverModalComponent)
   addDriverModalComponent!: AddDriverModalComponent;
 
   activeDropdownId: string | null = null;
-
   tabs: string[] = ['Assigned Drivers', 'All drivers'];
   activeTab: number = 0;
-
-  filteredDrivers: any[] = [];
+  allDrivers: any[] = [];
+  searchTerm: string = '';
   driverService = inject(DriverService);
 
   ngOnInit() {
@@ -32,16 +28,52 @@ export class DriversdatabaseComponent {
 
   getDrivers() {
     this.driverService.getDrivers().subscribe((drivers: any[]) => {
-      this.filteredDrivers = drivers;
+      this.allDrivers = drivers ? drivers : [];
     });
   }
 
-  openModal() {
-    this.addDriverModalComponent.openModal();
+  onDriverAdded(driverData: any) {
+    this.getDrivers();
+  }
+
+  openModal(driver?: any) {
+    if (driver) {
+      this.addDriverModalComponent.openModal(driver);
+    } else {
+      this.addDriverModalComponent.openModal();
+    }
   }
 
   setActiveTab(index: number) {
     this.activeTab = index;
+    this.activeDropdownId = null;
+  }
+
+  onSearchChange(value: string): void {
+    this.searchTerm = value.toLowerCase();
+    this.activeDropdownId = null;
+  }
+
+  get filteredDrivers(): any[] {
+    if (!this.allDrivers) return [];
+
+    let tabFiltered: any[];
+
+    if (this.activeTab === 0) {
+      tabFiltered = this.allDrivers.filter(
+        (driver) => driver.carModel && driver.plateNumber
+      );
+    } else {
+      tabFiltered = [...this.allDrivers];
+    }
+
+    if (!this.searchTerm) {
+      return tabFiltered;
+    } else {
+      return tabFiltered.filter((driver) =>
+        driver.driversName.toLowerCase().includes(this.searchTerm)
+      );
+    }
   }
 
   toggleDropdown(item: any) {
@@ -52,25 +84,28 @@ export class DriversdatabaseComponent {
     }
   }
 
-  deleteCar(item: any) {
+  deleteDriver(item: any) {
+    // Renamed method
     if (!item.id) {
       console.error('Driver ID is missing');
+      alert('Cannot delete driver: Missing ID.');
       return;
     }
 
     this.driverService
       .deleteDriver(item.id)
       .then(() => {
-        this.filteredDrivers = this.filteredDrivers.filter(
-          (d) => d.id !== item.id
-        );
+        this.allDrivers = this.allDrivers.filter((d) => d.id !== item.id);
+        this.activeDropdownId = null;
       })
       .catch((error: any) => {
         console.error('Error deleting driver:', error);
+        alert('Error deleting driver. Please try again.');
       });
   }
 
   editDriver(item: any) {
-    this.addDriverModalComponent.openModal(item);
+    this.openModal(item);
+    this.activeDropdownId = null;
   }
 }
