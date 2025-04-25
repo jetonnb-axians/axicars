@@ -58,16 +58,26 @@ input[type="search"] {
   background: #fff;
 }
 
-.cardatabase-table th,
 .cardatabase-table td {
   padding: 12px;
   border-bottom: 1px solid #ddd;
   text-align: left;
 }
 
-.cardatabase-table th {
-  background: #f9f9f9;
-  font-weight: bold;
+.table-body {
+  border-collapse: separate;
+  border-spacing: 20px 0;
+}
+
+.table-body tr {
+  border-radius: 10px;
+  border-top: 1px solid #ddd;
+  box-shadow: 0 4px 12px rgba(27, 26, 26, 0.1);
+}
+
+.table-body td {
+  padding: 10px;
+  border: none;
 }
 
 .status.active {

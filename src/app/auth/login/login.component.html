@@ -60,7 +60,6 @@
               stroke-linejoin="round"
             />
           </svg>
-
           <input
             type="password"
             placeholder="  ***********"
@@ -69,9 +68,8 @@
           />
         </form>
       </div>
-      <a id="fgps">Forgot Password?</a>
+      <a id="fgps" style="cursor: pointer">Forgot Password?</a>
       <button (click)="onSubmit()">Login</button>
-
       <p>
         Don't have an account?
         <a routerLink="/auth/signup" style="cursor: pointer">

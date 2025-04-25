@@ -18,6 +18,8 @@ export class DriversdatabaseComponent {
   @ViewChild(AddDriverModalComponent)
   addDriverModalComponent!: AddDriverModalComponent;
 
+  activeDropdownId: string | null = null;
+
   tabs: string[] = ['Assigned Drivers', 'All drivers'];
   activeTab: number = 0;
 
@@ -25,7 +27,10 @@ export class DriversdatabaseComponent {
   driverService = inject(DriverService);
 
   ngOnInit() {
-    // e qet ne nje metod te vecant =
+    this.getDrivers();
+  }
+
+  getDrivers() {
     this.driverService.getDrivers().subscribe((drivers: any[]) => {
       this.filteredDrivers = drivers;
     });
@@ -38,9 +43,13 @@ export class DriversdatabaseComponent {
   setActiveTab(index: number) {
     this.activeTab = index;
   }
-  //Fix duplicated dropdown
+
   toggleDropdown(item: any) {
-    item.showDropdown = !item.showDropdown;
+    if (this.activeDropdownId === item.id) {
+      this.activeDropdownId = null;
+    } else {
+      this.activeDropdownId = item.id;
+    }
   }
 
   deleteCar(item: any) {
@@ -62,6 +71,6 @@ export class DriversdatabaseComponent {
   }
 
   editDriver(item: any) {
-    this.addDriverModalComponent.openModal(item); // Pass driver object
+    this.addDriverModalComponent.openModal(item);
   }
 }

@@ -28,7 +28,8 @@ export class SidemenuComponent implements OnInit {
   }
 
   logout(): void {
-    this.authService.logout('User logged out');
+    // TO:
+    this.authService.logout();
     this.userName = null; // Reset username on logout
   }
 }

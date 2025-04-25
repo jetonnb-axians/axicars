@@ -1,13 +1,11 @@
 import { Component } from '@angular/core';
-import { SidemenuComponent } from "../sidemenu/sidemenu.component";
+import { SidemenuComponent } from '../sidemenu/sidemenu.component';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-base',
-  imports: [SidemenuComponent,RouterOutlet],
+  imports: [SidemenuComponent, RouterOutlet],
   templateUrl: './base.component.html',
-  styleUrl: './base.component.scss'
+  styleUrl: './base.component.scss',
 })
-export class BaseComponent {
-
-}
+export class BaseComponent {}

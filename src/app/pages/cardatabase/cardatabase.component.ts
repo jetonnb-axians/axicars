@@ -15,21 +15,20 @@ export class CardatabaseComponent implements OnInit {
   @ViewChild(ModalComponent) modalComponent!: ModalComponent;
   tabs: string[] = ['Active Cars', 'Available Cars', 'All Cars'];
   activeTab: number = 0;
-  // ki me i kriju interface per kerre  nvend t'any[] ki me kriju 1 interface CarInterface 
   carInfo: any[] = [];
-
-  
 
   constructor(private carService: CarService) {}
 
   ngOnInit() {
-    // e qet ne nje metod te vecant 
+    this.getCars();
+  }
+
+  getCars() {
     this.carService.getCars().subscribe((data: any[]) => {
       this.carInfo = data ? data : [];
-      console.log('Cars loaded:', this.carInfo);
     });
   }
-  
+
   openModal(carObject?: any) {
     if (carObject) {
       this.modalComponent.openModal(carObject);
@@ -37,15 +36,9 @@ export class CardatabaseComponent implements OnInit {
       this.modalComponent.openModal();
     }
   }
-  //Fshije ose kontrolloje 
-  onCarAdded(car: any) {
-    console.log('car', car)
-  }
-  //Fshije ose kontrolloje 
-
-  onCarUpdated(updatedCar: any) {}
 
   setActiveTab(index: number): void {
+    console.log('Index', index);
     this.activeTab = index;
   }
 
@@ -60,7 +53,6 @@ export class CardatabaseComponent implements OnInit {
       return this.carInfo;
     }
   }
-  //Check thiss 
   toggleDropdown(car: any) {
     this.carInfo.forEach((c) => {
       if (c !== car) {

@@ -10,6 +10,12 @@ import { provideHttpClient } from '@angular/common/http';
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore'; // Add this
+import { AuthGuard } from '@angular/fire/auth-guard';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { AngularFireAnalyticsModule } from '@angular/fire/compat/analytics';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyAWloYkL32zXQ09Io2tHnxcyvk0VRCtGsk',
@@ -24,10 +30,18 @@ const firebaseConfig = {
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
-    provideRouter(routes),
     provideHttpClient(),
     provideFirebaseApp(() => initializeApp(firebaseConfig)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()), // Add this line
+    provideRouter(routes),
+    importProvidersFrom([
+      AngularFireModule.initializeApp(firebaseConfig),
+      AngularFireAuthModule,
+      AngularFirestoreModule,
+      AngularFireDatabaseModule,
+      AngularFireAnalyticsModule,
+    ]),
+    // AuthGuard,
   ],
 };
