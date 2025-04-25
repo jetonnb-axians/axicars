@@ -84,11 +84,15 @@ nav {
   cursor: pointer;
   border-radius: 5px;
   transition: background 0.3s;
+  margin-bottom: 8px;
+}
+
+.menu li:last-child {
+  margin-bottom: 0;
 }
 
 .menu li:hover,
 .menu li.active {
-  /* ✅ Keeps active tab highlighted */
   background: #1e72c033;
 }
 
