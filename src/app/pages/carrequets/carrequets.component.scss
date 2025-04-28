@@ -17,7 +17,7 @@ h1 {
   border-bottom: 2px solid #ddd;
   padding-bottom: 10px;
   margin-bottom: 20px;
-  gap: 500px; /* Adjust spacing between tabs */
+  gap: 500px;
 }
 
 .tab {
@@ -31,14 +31,19 @@ h1 {
   border-bottom: none;
   transition: all 0.3s ease-in-out;
   bottom: -12px;
+  margin-right: 80px;
+}
+
+.tab:last-child {
+  margin-right: 0;
 }
 
 .tab::after {
   content: "";
   position: absolute;
   bottom: 0;
-  left: -200px;
-  right: -200px;
+  left: -350px;
+  right: -270px;
   height: 2px;
   background-color: transparent;
   transition: background-color 0.3s ease-in-out;

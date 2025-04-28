@@ -17,8 +17,8 @@ h1 {
   position: relative;
   border-bottom: 2px solid #ddd;
   margin-bottom: 20px;
-  gap: 450px; /* Adjust spacing between tabs */
-  width: 100%; /* Make the border cover the full width of the page */
+  gap: 450px;
+  width: 100%;
 }
 
 .tab {
@@ -38,7 +38,7 @@ h1 {
   content: "";
   position: absolute;
   bottom: 0;
-  left: -120px;
+  left: -90px;
   right: -120px;
   height: 2px;
   background-color: transparent;
