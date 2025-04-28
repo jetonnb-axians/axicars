@@ -3,8 +3,14 @@
     <span class="close" (click)="closeModal()">&times;</span>
 
     <div class="title">
-      <h2>Add new Driver</h2>
-      <p>Please fill out form to add new driver</p>
+      <h2>{{ isEditMode ? "Edit Driver" : "Add new Driver" }}</h2>
+      <p>
+        {{
+          isEditMode
+            ? "Update driver details below"
+            : "Please fill out form to add new driver"
+        }}
+      </p>
     </div>
 
     <form>
@@ -99,7 +105,9 @@
                 Cancel
               </button>
               <form [formGroup]="driverForm" (ngSubmit)="onSubmit()">
-                <button class="add-btn" type="submit">Add Driver</button>
+                <button class="add-btn" type="submit">
+                  {{ isEditMode ? "Save Changes" : "Add Driver" }}
+                </button>
               </form>
             </div>
           </div>

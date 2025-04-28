@@ -1,0 +1,13 @@
+<div class="overlay" *ngIf="isOpen">
+  <div class="modal">
+    <button class="close-button" (click)="onCancel()">×</button>
+
+    <h2>{{ title }}</h2>
+    <p>{{ paragraph }}</p>
+
+    <div class="buttons">
+      <button class="cancel" (click)="onCancel()">Cancel</button>
+      <button class="delete" (click)="onConfirm()">Delete Car</button>
+    </div>
+  </div>
+</div>

@@ -100,7 +100,7 @@
               </div>
               <div
                 class="dropdown-item delete"
-                (click)="deleteCar(item); $event.stopPropagation()"
+                (click)="openDeleteModal(item); $event.stopPropagation()"
               >
                 <img src="icons/delete.svg" alt="Delete" />
                 <span>Delete car</span>
@@ -120,3 +120,9 @@
     </tbody>
   </table>
 </div>
+
+<app-delete-modal
+  [isOpen]="isDeleteModalOpen"
+  (confirmDelete)="confirmDelete()"
+  (cancelDelete)="cancelDelete()"
+></app-delete-modal>

@@ -31,6 +31,8 @@ export class AddDriverModalComponent {
 
   driverService = inject(DriverService);
 
+  isEditMode = false;
+
   async onSubmit() {
     if (!this.driverForm.valid) return;
 
@@ -80,34 +82,35 @@ export class AddDriverModalComponent {
     }
   }
 
-  openModal(driver?: any) {
+  openModal(driverData?: any) {
     const modalElement = this.modal.nativeElement;
     modalElement.style.display = 'block';
-
-    if (!this.driverForm) {
-      this.driverForm = this.formBuilder.group({
-        firstName: [''],
-        lastName: [''],
-        phoneNumber: [''],
-        emailAddress: [''],
+    this.isEditMode = !!driverData; // if driverData exists, we are in edit mode
+    if (driverData) {
+      this.driverForm.patchValue({
+        firstName: driverData.firstName,
+        lastName: driverData.lastName,
+        phoneNumber: driverData.phoneNumber,
+        emailAddress: driverData.emailAddress,
       });
     }
 
-    if (driver) {
-      const [firstName, lastName] = driver.driversName.split(' ');
+    if (driverData) {
+      const [firstName, lastName] = driverData.driversName.split(' ');
 
       this.driverForm.patchValue({
         firstName,
         lastName,
-        phoneNumber: driver.phoneNumber,
-        emailAddress: driver.emailAddress,
+        phoneNumber: driverData.phoneNumber,
+        emailAddress: driverData.emailAddress,
       });
 
-      this.filePreview = driver.driverpng;
-      this.fileName = driver.driversName;
-      this.editingDriverId = driver.id;
+      this.filePreview = driverData.driverpng;
+      this.fileName = driverData.driversName;
+      this.editingDriverId = driverData.id;
     } else {
-      this.editingDriverId = null;
+      this.driverForm.reset();
+      this.filePreview = null;
     }
   }
   closeModal() {

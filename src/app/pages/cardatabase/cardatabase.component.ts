@@ -1,24 +1,35 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
+import {
+  Component,
+  ViewChild,
+  OnInit,
+  HostListener,
+  ElementRef,
+} from '@angular/core';
 import { CarService } from '../../services/car.service';
 import { ModalComponent } from '../modal/modal.component';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { DeleteModalComponent } from '../../shared/delete-modal/delete-modal.component'; // 👈 Import it
 
 @Component({
   selector: 'app-cardatabase',
   standalone: true,
-  imports: [CommonModule, RouterModule, ModalComponent],
+  imports: [CommonModule, RouterModule, ModalComponent, DeleteModalComponent], // 👈 Add DeleteModalComponent here
   templateUrl: './cardatabase.component.html',
   styleUrls: ['./cardatabase.component.scss'],
 })
 export class CardatabaseComponent implements OnInit {
   @ViewChild(ModalComponent) modalComponent!: ModalComponent;
+
   tabs: string[] = ['Active Cars', 'Available Cars', 'All Cars'];
   activeTab: number = 0;
   carInfo: any[] = [];
   searchTerm: string = '';
 
-  constructor(private carService: CarService) {}
+  carToDelete: any = null;
+  isDeleteModalOpen: boolean = false;
+
+  constructor(private carService: CarService, private elementRef: ElementRef) {}
 
   ngOnInit() {
     this.getCars();
@@ -40,7 +51,6 @@ export class CardatabaseComponent implements OnInit {
   }
 
   setActiveTab(index: number): void {
-    console.log('Index', index);
     this.activeTab = index;
     this.closeAllDropdowns();
   }
@@ -53,7 +63,7 @@ export class CardatabaseComponent implements OnInit {
   get filteredCars(): any[] {
     if (!this.carInfo) return [];
 
-    let tabFilteredCars: any[];
+    let tabFilteredCars: any[] = [];
 
     if (this.activeTab === 0) {
       tabFilteredCars = this.carInfo.filter((car) => car.status === 'Active');
@@ -92,7 +102,6 @@ export class CardatabaseComponent implements OnInit {
       this.carService
         .deleteCar(carId)
         .then(() => {
-          console.log(`Car with id ${carId} deleted successfully.`);
           this.carInfo = this.carInfo.filter((c) => c.id !== carId);
         })
         .catch((error: any) => {
@@ -103,5 +112,57 @@ export class CardatabaseComponent implements OnInit {
       console.error('Cannot delete car without an ID.');
       alert('Cannot delete car: Missing ID.');
     }
+  }
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent) {
+    const moreOptionsElements = document.querySelectorAll('.more-options');
+
+    let clickedInside = false;
+
+    moreOptionsElements.forEach((element) => {
+      if (element.contains(event.target as Node)) {
+        clickedInside = true;
+      }
+    });
+
+    if (!clickedInside) {
+      this.closeAllDropdowns();
+    }
+  }
+
+  openDeleteModal(car: any) {
+    this.carToDelete = car;
+    this.isDeleteModalOpen = true;
+  }
+
+  // When user confirms deletion
+  confirmDelete() {
+    if (this.carToDelete?.id) {
+      this.carService
+        .deleteCar(this.carToDelete.id)
+        .then(() => {
+          this.carInfo = this.carInfo.filter(
+            (c) => c.id !== this.carToDelete.id
+          );
+        })
+        .catch((error: any) => {
+          console.error(
+            `Error deleting car with id ${this.carToDelete.id}:`,
+            error
+          );
+          alert('Error deleting car. Please try again.');
+        });
+    } else {
+      console.error('Cannot delete car without an ID.');
+      alert('Cannot delete car: Missing ID.');
+    }
+    this.isDeleteModalOpen = false;
+    this.carToDelete = null;
+  }
+
+  // When user cancels
+  cancelDelete() {
+    this.isDeleteModalOpen = false;
+    this.carToDelete = null;
   }
 }

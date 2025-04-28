@@ -68,7 +68,7 @@
         </td>
 
         <td>
-          <div class="more-options" (click)="toggleDropdown(item)">
+          <div class="more-options" (click)="toggleDropdown(item, $event)">
             <img src="icons/dots.svg" alt="More" />
             @if(activeDropdownId === item.id) {
             <div class="dropdown-menu">
@@ -79,7 +79,6 @@
                 <img src="icons/edit.svg" alt="Edit" />
                 <span>Edit driver</span>
               </div>
-
               <div
                 class="dropdown-item delete"
                 (click)="deleteDriver(item); $event.stopPropagation()"
@@ -102,7 +101,14 @@
     </tbody>
   </table>
 </div>
+
 <app-add-driver-modal
   #addDriverModal
   (driverAdded)="onDriverAdded($event)"
 ></app-add-driver-modal>
+
+<app-delete-modal
+  [isOpen]="isDeleteModalOpen"
+  (confirmDelete)="onConfirmDelete()"
+  (cancelDelete)="isDeleteModalOpen = false"
+></app-delete-modal>
