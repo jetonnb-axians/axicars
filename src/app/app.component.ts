@@ -7,8 +7,6 @@ import { SidemenuComponent } from './layouts/sidemenu/sidemenu.component';
   imports: [RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
-
-  //help me call my sidemenu component
 })
 export class AppComponent {
   title = 'axiCars';

@@ -15,21 +15,9 @@ import { BaseComponent } from './layouts/base/base.component';
 const redirectUnauthorizedToLanding = () =>
   redirectUnauthorizedTo(['auth', 'login']);
 
-// const redirectUnauthorizedToLogin = () =>
-//   redirectUnauthorizedTo(['/your-login']);
-// const redirectLoggedInToItems = () => redirectLoggedInTo(['/your-dashboard']);
-
 export const routes: Routes = [
   { path: 'auth', loadChildren: () => import('./core/routes/auth.routes') },
 
-  // {
-  //   path: 'dashboard',
-  //   component: DashboardComponent,
-  // },
-  // {
-  //   path: 'home',
-  //   component: BaseComponent,
-  // },
   {
     path: '',
     component: BaseComponent,
@@ -38,21 +26,6 @@ export const routes: Routes = [
     loadChildren: () =>
       import('./core/routes/pages.routes').then((m) => m.default),
   },
-  // {
-  //   path: 'driversdatabase',
-  //   component: DriversdatabaseComponent,
-  //   canActivate: [AuthGuard],
-  //   data: { authGuardPipe: redirectUnauthorizedToLanding },
-  // },
-
-  // {
-  //   path: 'auth/login',
-  //   component: LoginComponent,
-  // },
-  // {
-  //   path: 'auth/signup',
-  //   component: SignupComponent,
-  // },
 
   { path: '', redirectTo: 'home', pathMatch: 'full' },
 ];

@@ -1,4 +1,3 @@
-// app.config.ts
 import {
   ApplicationConfig,
   importProvidersFrom,
@@ -9,8 +8,7 @@ import { routes } from './app.routes';
 import { provideHttpClient } from '@angular/common/http';
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
-import { getFirestore, provideFirestore } from '@angular/fire/firestore'; // Add this
-import { AuthGuard } from '@angular/fire/auth-guard';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
@@ -21,7 +19,7 @@ const firebaseConfig = {
   apiKey: 'AIzaSyAWloYkL32zXQ09Io2tHnxcyvk0VRCtGsk',
   authDomain: 'axicars-d49dd.firebaseapp.com',
   projectId: 'axicars-d49dd',
-  storageBucket: 'axicars-d49dd.appspot.com', // Fixed this line
+  storageBucket: 'axicars-d49dd.appspot.com',
   messagingSenderId: '912196126101',
   appId: '1:912196126101:web:7fa680d4178f9022fae29c',
   measurementId: 'G-F68BTX5V0M',
@@ -33,7 +31,7 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(),
     provideFirebaseApp(() => initializeApp(firebaseConfig)),
     provideAuth(() => getAuth()),
-    provideFirestore(() => getFirestore()), // Add this line
+    provideFirestore(() => getFirestore()),
     provideRouter(routes),
     importProvidersFrom([
       AngularFireModule.initializeApp(firebaseConfig),
@@ -42,6 +40,5 @@ export const appConfig: ApplicationConfig = {
       AngularFireDatabaseModule,
       AngularFireAnalyticsModule,
     ]),
-    // AuthGuard,
   ],
 };

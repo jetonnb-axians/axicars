@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { AuthService } from '../../services/auth.service'; // Import AuthService
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidemenu',
@@ -12,12 +13,11 @@ import { AuthService } from '../../services/auth.service'; // Import AuthService
 })
 export class SidemenuComponent implements OnInit {
   isClosed = false;
-  userName: string | null = null; // Store logged-in user name
+  userName: string | null = null;
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
-    // Subscribe to the auth service to get the username
     this.authService.userName$.subscribe((name) => {
       this.userName = name;
     });
@@ -26,10 +26,9 @@ export class SidemenuComponent implements OnInit {
   toggleSidebar() {
     this.isClosed = !this.isClosed;
   }
-
   logout(): void {
-    // TO:
     this.authService.logout();
-    this.userName = null; // Reset username on logout
+    this.userName = null;
+    this.router.navigate(['/auth/login']);
   }
 }
