@@ -7,6 +7,7 @@ import {
   addDoc,
   collectionData,
   updateDoc,
+  docData,
 } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
@@ -34,5 +35,9 @@ export class DriverService {
   deleteDriver(driverId: string) {
     const driverDocRef = doc(this.firestore, `drivers/${driverId}`);
     return deleteDoc(driverDocRef);
+  }
+  getDriverById(id: string) {
+    const driverDoc = doc(this.firestore, `drivers/${id}`);
+    return docData(driverDoc, { idField: 'id' });
   }
 }

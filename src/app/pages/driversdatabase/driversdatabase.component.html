@@ -41,16 +41,23 @@
       @for (item of filteredDrivers; track item.id) {
       <tr>
         <td>
-          <div style="display: flex; align-items: center; gap: 8px">
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              gap: 8px;
+              cursor: pointer;
+            "
+            [routerLink]="['/driver-profile', item.id]"
+          >
             <img
               [src]="item.driverpng || 'path/to/default/driver.png'"
               alt="Driver"
             />
-            <span>
-              {{ item.driversName }}
-            </span>
+            <span>{{ item.firstName }}</span>
           </div>
         </td>
+
         <td>
           @if(item.carModel) {
           <div style="display: flex; align-items: center; gap: 8px">

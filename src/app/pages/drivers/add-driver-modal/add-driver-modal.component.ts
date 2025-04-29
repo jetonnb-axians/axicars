@@ -37,7 +37,9 @@ export class AddDriverModalComponent {
     if (!this.driverForm.valid) return;
 
     const newDriver = {
-      driversName: `${this.driverForm.value.firstName} ${this.driverForm.value.lastName}`,
+      firstName: this.driverForm.value.firstName,
+      lastName: this.driverForm.value.lastName,
+      // driversName: `${this.driverForm.value.firstName} ${this.driverForm.value.lastName}`,
       phoneNumber: this.driverForm.value.phoneNumber,
       emailAddress: this.driverForm.value.emailAddress,
       carModel: 'Peugeot 208 2021',

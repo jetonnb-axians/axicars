@@ -7,6 +7,7 @@ export interface Car extends DocumentData {
   carModel: string;
   plateNumber: string;
   driversName: string;
+  
   fuel: string;
   km: string;
   lastInspection: string;
