@@ -1,54 +1,62 @@
 <div class="driver-profile-container" *ngIf="driver">
   <h1>Driver Profile</h1>
+  <div class="header-container">
+    <div class="profile-header-container">
+      <div class="profile-header">
+        <div class="header-left">
+          <img
+            class="profile-image"
+            [src]="driver.driverpng"
+            alt="Driver Image"
+          />
+          <div class="profile-info">
+            <h2>{{ driver.firstName }} {{ driver.lastName }}</h2>
+            <p class="title">Software Developer</p>
+            <p class="location">Kosovo</p>
+          </div>
+        </div>
+      </div>
 
-  <div class="profile-header">
-    <div class="header-left">
-      <img class="profile-image" [src]="driver.driverpng" alt="Driver Image" />
-      <div class="profile-info">
-        <h2>{{ driver.firstName }} {{ driver.lastName }}</h2>
-        <p class="title">Software Developer</p>
-        <p class="location">Kosovo</p>
+      <div class="profile-details">
+        <div class="detail-item">
+          <span class="label">First Name</span>
+          <p>{{ driver.firstName }}</p>
+        </div>
+        <div class="detail-item">
+          <span class="label">Last Name</span>
+          <p>{{ driver.lastName }}</p>
+        </div>
+        <div class="detail-item">
+          <span class="label">Email Address</span>
+          <p>{{ driver.emailAddress }}</p>
+        </div>
+        <div class="detail-item">
+          <span class="label">Phone</span>
+          <p>{{ driver.phoneNumber }}</p>
+        </div>
       </div>
     </div>
-    <button class="edit-button">
-      <svg
-        width="17"
-        height="16"
-        viewBox="0 0 17 16"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M13.0832 6.74984L15.5832 4.24984L12.2498 0.916504L9.74984 3.4165M13.0832 6.74984L4.74984 15.0832H1.4165V11.7498L9.74984 3.4165M13.0832 6.74984L9.74984 3.4165"
-          stroke="white"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-      </svg>
+    <div class="content-right-side">
+      <button class="edit-button" (click)="openEditModal()">
+        <svg
+          width="17"
+          height="16"
+          viewBox="0 0 17 16"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M13.0832 6.74984L15.5832 4.24984L12.2498 0.916504L9.74984 3.4165M13.0832 6.74984L4.74984 15.0832H1.4165V11.7498L9.74984 3.4165M13.0832 6.74984L9.74984 3.4165"
+            stroke="white"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
 
-      Edit
-    </button>
-  </div>
-
-  <div class="profile-details">
-    <div class="detail-item">
-      <span class="label">First Name</span>
-      <p>{{ driver.firstName }}</p>
-    </div>
-    <div class="detail-item">
-      <span class="label">Last Name</span>
-      <p>{{ driver.lastName }}</p>
-    </div>
-    <div class="detail-item">
-      <span class="label">Email Address</span>
-      <p>{{ driver.emailAddress }}</p>
-    </div>
-    <div class="detail-item">
-      <span class="label">Phone</span>
-      <p>{{ driver.phoneNumber }}</p>
+        Edit
+      </button>
     </div>
   </div>
-
   <div class="report-section">
     <div class="report-tabs">
       <button class="tab-button active">KM Report</button>
@@ -73,6 +81,14 @@
             <td>65.000 km</td>
           </tr>
         </tbody>
+        <tbody>
+          <tr>
+            <td>{{ driver.firstName }}</td>
+            <td>19.02.2024</td>
+            <td>50.000 km</td>
+            <td>65.000 km</td>
+          </tr>
+        </tbody>
       </table>
     </div>
   </div>
@@ -80,3 +96,8 @@
     <p>Loading driver profile...</p>
   </ng-template>
 </div>
+
+<app-add-driver-modal
+  #editDriverModal
+  (driverAdded)="handleDriverUpdated($event)"
+></app-add-driver-modal>

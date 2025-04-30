@@ -95,20 +95,9 @@ export class AddDriverModalComponent {
         phoneNumber: driverData.phoneNumber,
         emailAddress: driverData.emailAddress,
       });
-    }
-
-    if (driverData) {
-      const [firstName, lastName] = driverData.driversName.split(' ');
-
-      this.driverForm.patchValue({
-        firstName,
-        lastName,
-        phoneNumber: driverData.phoneNumber,
-        emailAddress: driverData.emailAddress,
-      });
 
       this.filePreview = driverData.driverpng;
-      this.fileName = driverData.driversName;
+      this.fileName = driverData.firstName + ' ' + driverData.lastName;
       this.editingDriverId = driverData.id;
     } else {
       this.driverForm.reset();

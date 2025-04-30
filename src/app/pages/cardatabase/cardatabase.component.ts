@@ -43,6 +43,7 @@ export class CardatabaseComponent implements OnInit {
   }
 
   openModal(carObject?: any) {
+    this.closeAllDropdowns();
     if (carObject) {
       this.modalComponent.openModal(carObject);
     } else {

@@ -17,13 +17,32 @@ button {
 
 .driver-profile-container {
   padding: 20px;
-  max-width: 900px;
   margin-top: 20px;
   margin-bottom: 20px;
   margin-left: 50px;
   margin-right: auto;
   background-color: #fff;
   border-radius: 8px;
+}
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  .profile-header-container {
+    width: 720px;
+    .profile-header {
+      display: flex;
+      justify-content: space-between;
+
+      align-items: flex-start;
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+    }
+  }
+  .content-right-side {
+    display: flex;
+    align-items: flex-start;
+    margin-right: 80px;
+  }
 }
 
 h1 {
@@ -33,14 +52,6 @@ h1 {
   color: #111;
 }
 
-.profile-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 30px;
-  padding-bottom: 20px;
-}
-
 .header-left {
   display: flex;
   align-items: center;
@@ -48,8 +59,8 @@ h1 {
 }
 
 .profile-image {
-  width: 80px;
-  height: 80px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
   object-fit: cover;
   border: 1px solid #eee;
@@ -71,12 +82,12 @@ h1 {
 .edit-button {
   display: inline-flex;
   align-items: center;
-  margin-right: 140px;
+  margin-right: 0px;
   gap: 5px;
   background-color: #1e72c0;
   color: white;
   border: none;
-  padding: 8px 15px;
+  padding: 10px 23px;
   border-radius: 6px;
   font-size: 0.9rem;
   font-weight: 500;
@@ -106,9 +117,9 @@ h1 {
 .detail-item .label {
   display: block;
   font-size: 0.8rem;
-  color: #888;
+  color: #000000;
   margin-bottom: 5px;
-  font-weight: 500;
+  font-weight: bolder;
 }
 
 .detail-item p {
@@ -120,6 +131,7 @@ h1 {
   margin-top: 20px; /* Add some space above the table section */
   border-radius: 8px;
   overflow: hidden; /* Keep rounded corners */
+  font-size: 17px;
 }
 
 .report-tabs {
@@ -133,45 +145,55 @@ h1 {
   background-color: transparent;
   cursor: pointer;
   font-weight: 500;
+  font-size: 19px;
 }
 
 .tab-button.active {
+  font-size: 18px;
   color: black;
-  border-bottom: 2px solid #1e72c0; /* Active tab indicator */
+  border-bottom: 2px solid #1e72c0;
 }
 
 .tab-button:not(.active):hover {
-  color: #495057;
+  color: #0e0f10;
 }
 
 .report-table-container {
-  padding: 15px; /* Padding around the table */
-  background-color: #fff; /* White background for table area */
+  padding: 15px;
+  background-color: #fff;
 }
 
 .report-table {
   width: 100%;
-  border-collapse: collapse; /* Remove gaps between cells */
+  border-collapse: separate;
 }
 
 .report-table th,
 .report-table td {
   text-align: left;
-  padding: 12px 15px; /* Padding within cells */
-  border-bottom: 1px solid #dee2e6; /* Horizontal lines between rows */
+  padding: 12px 15px;
+  border-bottom: 1px solid #dee2e6;
 }
 
 .report-table th {
   font-weight: 600;
-  color: #495057; /* Header text color */
+  color: #495057;
   font-size: 0.9em;
 }
 
 .report-table tbody tr:last-child td {
-  border-bottom: none; /* Remove border from the last row */
+  text-align: left;
+  padding: 12px 15px;
+  border-bottom: 1px solid #dee2e6;
 }
 
 .report-table td {
-  color: #6c757d; /* Body text color */
+  color: #6c757d;
   font-size: 0.9em;
+}
+
+.table-body tr {
+  border-radius: 10px;
+  border-top: 1px solid #ddd;
+  box-shadow: 0 4px 12px rgba(27, 26, 26, 0.1);
 }
