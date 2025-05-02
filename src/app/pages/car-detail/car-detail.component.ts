@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
 })
 export class CarDetailComponent implements OnInit {
   car: any;
+  selectedTab: string = 'car-info'; // Default tab
 
   constructor(private route: ActivatedRoute, private carService: CarService) {}
 
@@ -22,5 +23,9 @@ export class CarDetailComponent implements OnInit {
         this.car = data;
       });
     }
+  }
+
+  selectTab(tab: string) {
+    this.selectedTab = tab;
   }
 }
