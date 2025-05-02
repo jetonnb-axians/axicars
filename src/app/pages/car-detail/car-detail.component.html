@@ -1,0 +1,55 @@
+<div class="car-details">
+  <div class="header">
+    <h2>Peugeot 208 2021</h2>
+    <button class="driver-btn">View Driver Profile</button>
+  </div>
+
+  <div class="content">
+    <div class="left">
+      <img [src]="car.carPng" alt="Car" />
+    </div>
+    <div class="right">
+      <iframe
+        class="map"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d733.4924633252713!2d21.141815000070004!3d42.66199423526739!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13549f5510b1be45%3A0xbe64f8d64992205f!2sAxians%20Kosovo!5e0!3m2!1sen!2s!4v1746185842083!5m2!1sen!2s"
+        allowfullscreen=""
+        loading="lazy"
+      ></iframe>
+    </div>
+  </div>
+
+  <div class="tabs">
+    <div class="tab active">Car info</div>
+    <div class="tab">KM Report</div>
+    <div class="tab">Maintenance history</div>
+  </div>
+
+  <div class="car-info">
+    <table>
+      <thead>
+        <tr>
+          <th>Model</th>
+          <th>Plate Number</th>
+          <th>Km</th>
+          <th>Fuel</th>
+          <th>Driver</th>
+          <th>Last Inspection</th>
+          <th>Next Inspection</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ car.carModel }}</td>
+          <td>{{ car.plateNumber }}</td>
+          <td>{{ car.km }}</td>
+          <td>{{ car.status }}</td>
+          <td class="driver-cell">
+            <img src="icons/driver.png" class="avatar" />
+          </td>
+          <td>{{ car.lastInspection }}</td>
+          <td>{{ car.nextInspection }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

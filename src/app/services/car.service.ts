@@ -1,4 +1,4 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable } from '@angular/core';
 import {
   Firestore,
   collection,
@@ -6,8 +6,11 @@ import {
   updateDoc,
   doc,
   deleteDoc,
+  getDoc,
+  DocumentReference,
+  DocumentSnapshot,
 } from '@angular/fire/firestore';
-import { collectionData } from '@angular/fire/firestore';
+import { collectionData, docData } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -34,5 +37,10 @@ export class CarService {
   deleteCar(carId: string): Promise<void> {
     const carDocRef = doc(this.firestore, `cars/${carId}`);
     return deleteDoc(carDocRef);
+  }
+
+  getCarById(id: string): Observable<any> {
+    const carDocRef = doc(this.firestore, `cars/${id}`);
+    return docData(carDocRef, { idField: 'id' }) as Observable<any>;
   }
 }

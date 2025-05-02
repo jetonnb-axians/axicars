@@ -1,15 +1,21 @@
 <div class="table-container">
-  <div><h1>Car Requests</h1></div>
+  <div>
+    <h1>Car Requests</h1>
+    <button class="add-button">
+      <span> Delete All Requests</span>
+    </button>
+  </div>
+
   <ul class="table-tabs">
-    <!-- Ndreqe NGFORIN O JETON to @FOR-->
+    @for (tab of tabs; track tab) {
     <li
-      *ngFor="let tab of tabs; let i = index"
       class="tab"
-      [class.active]="activeTab === i"
-      (click)="setActiveTab(i)"
+      [class.active]="activeTab === $index"
+      (click)="setActiveTab($index)"
     >
       {{ tab }}
     </li>
+    }
   </ul>
 
   <label class="search-label">

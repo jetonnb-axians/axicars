@@ -1,0 +1,93 @@
+.car-details {
+  font-family: "Poppins", sans-serif;
+  padding: 20px;
+  background-color: #fff;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.driver-btn {
+  margin-right: 100px;
+  background-color: #1e72c0;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.content {
+  align-items: center;
+  display: flex;
+  margin-top: 20px;
+  gap: 20px;
+}
+
+.left img {
+  width: 660px;
+  height: 350px;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.right .map {
+  width: 660px;
+  height: 350px;
+  border: 0;
+  border-radius: 10px;
+}
+
+.tabs {
+  display: flex;
+  border-bottom: 2px solid #ddd;
+  margin-top: 20px;
+}
+
+.tab {
+  padding: 10px 20px;
+  cursor: pointer;
+  font-weight: 500;
+  color: #555;
+}
+
+.tab.active {
+  color: black;
+  border-bottom: 3px solid #1e72c0;
+}
+
+.car-info {
+  margin-top: 20px;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+thead {
+  background-color: #f8f8f8;
+}
+
+th,
+td {
+  padding: 12px;
+}
+
+.driver-cell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+}

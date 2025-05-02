@@ -49,13 +49,14 @@
     <tbody class="table-body">
       @for (item of filteredCars; track item.id) {
       <tr>
-        <td>
+        <td [routerLink]="['/car', item.id]" class="clickable-td">
           <img
             [src]="item.carPng"
             style="width: 40px; margin-right: 8px; vertical-align: middle"
           />
-          <span>{{ item.carModel }}</span>
+          {{ item.carModel }}
         </td>
+
         <td>{{ item.plateNumber }}</td>
         <td>{{ item.km + " km" }}</td>
         <td>

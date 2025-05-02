@@ -21,6 +21,13 @@ export class DriverProfileComponent implements OnInit {
 
   driverId: string | null = null;
   driver: any = null;
+
+  activeTab: 'km' | 'damage' = 'km';
+
+  setTab(tab: 'km' | 'damage') {
+    this.activeTab = tab;
+  }
+
   openEditModal() {
     if (this.driver) {
       this.editModal.openModal(this.driver);

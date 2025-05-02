@@ -5,6 +5,7 @@ import { CardatabaseComponent } from '../../pages/cardatabase/cardatabase.compon
 import { CarrequetsComponent } from '../../pages/carrequets/carrequets.component';
 import { DriversdatabaseComponent } from '../../pages/driversdatabase/driversdatabase.component';
 import { DriverProfileComponent } from '../../pages/driver-profile/driver-profile.component';
+import { CarDetailComponent } from '../../pages/car-detail/car-detail.component';
 
 export default [
   {
@@ -38,4 +39,6 @@ export default [
   },
 
   { path: 'driversprofile', component: DriversdatabaseComponent },
+
+  { path: 'car/:id', component: CarDetailComponent },
 ] as Route[];

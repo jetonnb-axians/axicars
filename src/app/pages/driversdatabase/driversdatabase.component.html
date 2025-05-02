@@ -1,10 +1,13 @@
 <div class="table-container">
   <div>
     <h1>Driver's Database</h1>
+    @if (activeTab === 0) {
     <button class="add-button" (click)="openModal()">
       <img src="icons/plussign.svg" alt="" />Add New Driver
     </button>
+    }
   </div>
+
   <ul class="table-tabs">
     <li
       *ngFor="let tab of tabs; let i = index"

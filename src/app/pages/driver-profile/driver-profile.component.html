@@ -59,11 +59,24 @@
   </div>
   <div class="report-section">
     <div class="report-tabs">
-      <button class="tab-button active">KM Report</button>
-      <button class="tab-button">Driver Damage Reports</button>
+      <button
+        class="tab-button"
+        [class.active]="activeTab === 'km'"
+        (click)="setTab('km')"
+      >
+        KM Report
+      </button>
+      <button
+        class="tab-button"
+        [class.active]="activeTab === 'damage'"
+        (click)="setTab('damage')"
+      >
+        Driver Damage Reports
+      </button>
     </div>
 
     <div class="report-table-container">
+      @if (activeTab === 'km') {
       <table class="report-table">
         <thead>
           <tr>
@@ -81,15 +94,31 @@
             <td>65.000 km</td>
           </tr>
         </tbody>
+      </table>
+      } @else {
+      <table class="report-table">
+        <thead>
+          <tr>
+            <th>Employee</th>
+            <th>Email</th>
+            <th>Date</th>
+            <th>Equipment Involved</th>
+            <th>Damage</th>
+            <th>Actions Token</th>
+          </tr>
+        </thead>
         <tbody>
           <tr>
-            <td>{{ driver.firstName }}</td>
-            <td>19.02.2024</td>
-            <td>50.000 km</td>
-            <td>65.000 km</td>
+            <td>{{ driver.firstName }} {{ driver.lastName }}</td>
+            <td>{{ driver.emailAddress }}</td>
+            <td>28.04.2025</td>
+            <td>Peugeot 208 2021</td>
+            <td>Car tires</td>
+            <td>Tire Change</td>
           </tr>
         </tbody>
       </table>
+      }
     </div>
   </div>
   <ng-template #loading>

@@ -145,17 +145,20 @@ h1 {
   background-color: transparent;
   cursor: pointer;
   font-weight: 500;
-  font-size: 19px;
+  font-size: 16px;
 }
 
 .tab-button.active {
-  font-size: 18px;
   color: black;
   border-bottom: 2px solid #1e72c0;
 }
 
 .tab-button:not(.active):hover {
   color: #0e0f10;
+}
+.tab-button.active {
+  color: rgb(45, 42, 42);
+  font-weight: bolder;
 }
 
 .report-table-container {
