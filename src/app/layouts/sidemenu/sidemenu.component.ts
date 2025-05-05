@@ -3,6 +3,7 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-sidemenu',
@@ -14,13 +15,27 @@ import { Router } from '@angular/router';
 export class SidemenuComponent implements OnInit {
   isClosed = false;
   userName: string | null = null;
+  isAdmin: boolean = false;
+
+  private subscriptions: Subscription = new Subscription();
 
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
-    this.authService.userName$.subscribe((name) => {
+    const userNameSub = this.authService.userName$.subscribe((name) => {
       this.userName = name;
     });
+
+    const isAdminSub = this.authService.isAdmin$.subscribe((isAdmin) => {
+      this.isAdmin = isAdmin;
+    });
+
+    this.subscriptions.add(userNameSub);
+    this.subscriptions.add(isAdminSub);
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
   }
 
   toggleSidebar() {

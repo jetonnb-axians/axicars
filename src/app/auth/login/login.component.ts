@@ -9,6 +9,7 @@ import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { CommonModule } from '@angular/common';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
@@ -28,7 +29,6 @@ export class LoginComponent implements OnInit {
     password: ['', [Validators.required, Validators.minLength(6)]],
   });
 
-  // --- State ---
   errorMessage: string | null = null;
 
   ngOnInit(): void {
@@ -36,10 +36,9 @@ export class LoginComponent implements OnInit {
 
     this.afAuth.authState.subscribe((user: any) => {
       if (user) {
-        console.log(
-          'User already logged in, redirecting from ngOnInit to dashboard'
-        );
-        this.router.navigate(['/dashboard']);
+        this.authService.isAdmin$.pipe(take(1)).subscribe((isAdmin) => {
+          this.router.navigate([isAdmin ? '/cardatabase' : '/dashboard']);
+        });
       }
     });
   }
@@ -64,13 +63,13 @@ export class LoginComponent implements OnInit {
     }
 
     this.errorMessage = null;
-
     const { email, password } = this.userForm.getRawValue();
 
     this.authService.login(email, password).subscribe({
       next: () => {
-        console.log('Login successful, navigating to dashboard.');
-        this.router.navigate(['/dashboard']);
+        this.authService.isAdmin$.pipe(take(1)).subscribe((isAdmin) => {
+          this.router.navigate([isAdmin ? '/cardatabase' : '/dashboard']);
+        });
       },
       error: (error) => {
         console.error('Login failed:', error);

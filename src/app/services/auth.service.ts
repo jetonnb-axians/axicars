@@ -11,13 +11,20 @@ import {
 } from '@angular/fire/auth';
 import { from, Observable } from 'rxjs';
 import { map, shareReplay, switchMap, tap } from 'rxjs/operators';
+
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   private auth: Auth = inject(Auth);
+  private userEmail: string = '';
   readonly authState$: Observable<User | null> = authState(this.auth).pipe(
     shareReplay(1)
+  );
+
+  // Observable for checking if user is an admin (based on the email in this case)
+  readonly isAdmin$: Observable<boolean> = this.authState$.pipe(
+    map((user) => user?.email === 'jeton_nb@icloud.com') // Check email or use another criteria for admin
   );
 
   readonly userName$: Observable<string | null> = this.authState$.pipe(
@@ -33,7 +40,7 @@ export class AuthService {
   );
 
   constructor() {
-    console.log('AuthService Initialized. Listening to auth state...');
+    this.userEmail = localStorage.getItem('userEmail') || ''; // Or get it from your login session
   }
 
   listenToAuthState(): Observable<User | null> {
@@ -59,6 +66,10 @@ export class AuthService {
         console.log(`User registered and profile updated for: ${username}`)
       )
     );
+  }
+
+  getUserEmail(): string {
+    return this.userEmail;
   }
 
   login(email: string, password: string): Observable<UserCredential> {
