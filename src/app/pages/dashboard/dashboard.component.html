@@ -1,4 +1,5 @@
 <div class="dashboard">
+  <h2 style="margin-left: 45px">Dashboard</h2>
   <div class="container">
     <div class="left-side">
       <div class="boxes">
@@ -48,24 +49,27 @@
       <li class="tab">Maintenance history</li>
       <li class="tab">Damage Report</li>
     </ul>
+  </div>
+  <div class="add-car-kmreport">
+    <div class="date-button">
+      <label for="from-date"
+        >From <input type="date" id="from-date" value="2024-02-10"
+      /></label>
 
-    <div class="add-car-kmreport">
-      <div class="date-button">
-        <label for="from-date">From:</label>
-        <input type="date" id="from-date" />
-
-        <label for="to-date">To:</label>
-        <input type="date" id="to-date" />
-      </div>
-      <button class="add-button">Add Car Km Report</button>
+      <label for="to-date"
+        >To <input type="date" id="to-date" value="2024-02-11"
+      /></label>
     </div>
+    <button class="add-button">Add Km Report</button>
+  </div>
+  <div>
     <table class="kmreport-table">
       <thead>
         <tr>
-          <td>Driver</td>
-          <td>Car Pickup</td>
-          <td>Before Car Pickup</td>
-          <td>After Car Pickup</td>
+          <th>Driver</th>
+          <th>Car Pickup</th>
+          <th>Before Car Pickup</th>
+          <th>After Car Pickup</th>
           <th></th>
         </tr>
       </thead>
@@ -94,9 +98,8 @@
         </tr>
       </tbody>
     </table>
-
-    <div class="view-all">
-      <button routerLink="/kmreports" class="view-all-button">View All</button>
-    </div>
+  </div>
+  <div class="view-all">
+    <button routerLink="/kmreports" class="view-all-button">View All</button>
   </div>
 </div>
