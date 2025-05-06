@@ -7,12 +7,13 @@ import { DriversdatabaseComponent } from '../../pages/driversdatabase/driversdat
 import { DriverProfileComponent } from '../../pages/driver-profile/driver-profile.component';
 import { CarDetailComponent } from '../../pages/car-detail/car-detail.component';
 import { AdminGuard } from '..//../guards/admin.guard';
+import { RedirectGuard } from '../../guards/redrict.guard';
 
 export default [
   {
     path: '',
-    redirectTo: '/cardatabase',
-    pathMatch: 'full',
+    canActivate: [RedirectGuard],
+    component: DashboardComponent,
   },
   {
     path: 'dashboard',

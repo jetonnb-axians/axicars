@@ -66,11 +66,11 @@
     <!-- Sidebar Menu -->
     <ul class="menu">
       @if (!isAdmin) {
-      <li [routerLink]="['/dashboard']">
+      <li [routerLink]="['/dashboard']" routerLinkActive="active">
         <img class="dashboardicon" src="icons/dashboard.svg" alt="" />
         <a>Dashboard</a>
       </li>
-      <li [routerLink]="['/kmreports']">
+      <li [routerLink]="['/kmreports']" routerLinkActive="active">
         <img class="kmreporticon" src="icons/kmreport.svg" alt="" />
         <a>Km Report</a>
       </li>

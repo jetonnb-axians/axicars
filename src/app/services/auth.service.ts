@@ -16,15 +16,15 @@ import { map, shareReplay, switchMap, tap } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class AuthService {
+  [x: string]: any;
   private auth: Auth = inject(Auth);
   private userEmail: string = '';
   readonly authState$: Observable<User | null> = authState(this.auth).pipe(
     shareReplay(1)
   );
 
-  // Observable for checking if user is an admin (based on the email in this case)
   readonly isAdmin$: Observable<boolean> = this.authState$.pipe(
-    map((user) => user?.email === 'jeton_nb@icloud.com') // Check email or use another criteria for admin
+    map((user) => user?.email === 'jeton_nb@icloud.com')
   );
 
   readonly userName$: Observable<string | null> = this.authState$.pipe(
@@ -40,7 +40,7 @@ export class AuthService {
   );
 
   constructor() {
-    this.userEmail = localStorage.getItem('userEmail') || ''; // Or get it from your login session
+    this.userEmail = localStorage.getItem('userEmail') || '';
   }
 
   listenToAuthState(): Observable<User | null> {
