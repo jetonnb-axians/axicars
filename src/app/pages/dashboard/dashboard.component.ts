@@ -11,4 +11,5 @@ import { AuthService } from '../../services/auth.service';
 })
 export class DashboardComponent {
   authService = inject(AuthService);
+  selectedTab: string = 'KM Report'; // default tab
 }

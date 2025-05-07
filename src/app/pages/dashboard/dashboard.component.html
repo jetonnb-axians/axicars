@@ -45,9 +45,16 @@
 
   <div class="table-container">
     <ul class="table-tabs">
-      <li class="tab">KM Report</li>
-      <li class="tab">Maintenance history</li>
-      <li class="tab">Damage Report</li>
+      @for (tab of ['KM Report', 'Maintenance History', 'Damage Report']; track
+      tab) {
+      <li
+        class="tab"
+        [class.active]="selectedTab === tab"
+        (click)="selectedTab = tab"
+      >
+        {{ tab }}
+      </li>
+      }
     </ul>
   </div>
   <div class="add-car-kmreport">
@@ -65,6 +72,7 @@
   <div>
     <table class="kmreport-table">
       <thead>
+        @if (selectedTab === 'KM Report') {
         <tr>
           <th>Driver</th>
           <th>Car Pickup</th>
@@ -72,8 +80,26 @@
           <th>After Car Pickup</th>
           <th></th>
         </tr>
+        } @else if (selectedTab === 'Maintenance History') {
+        <tr>
+          <th>Driver</th>
+          <th>Description of Work</th>
+          <th>Warranty</th>
+          <th>Total Cost</th>
+          <th></th>
+        </tr>
+        } @else if (selectedTab === 'Damage Report') {
+        <tr>
+          <th>Employee</th>
+          <th>Date</th>
+          <th>Equipment Involved</th>
+          <th>Damage</th>
+          <th></th>
+        </tr>
+        }
       </thead>
 
+      @if (selectedTab === 'KM Report') {
       <tbody>
         <tr>
           <td>Jeton</td>
@@ -82,21 +108,28 @@
           <td>65.000 km</td>
           <td><button class="more-options">...</button></td>
         </tr>
+      </tbody>
+      } @else if (selectedTab === 'Maintenance History') {
+      <tbody>
         <tr>
           <td>Jeton</td>
-          <td>20.02.2024</td>
-          <td>50.000 km</td>
-          <td>65.000 km</td>
-          <td><button class="more-options">...</button></td>
-        </tr>
-        <tr>
-          <td>Jeton</td>
-          <td>19.02.2024</td>
-          <td>19.02.2024</td>
-          <td>65.000 km</td>
+          <td>Oil change & filter</td>
+          <td>Yes</td>
+          <td>€120</td>
           <td><button class="more-options">...</button></td>
         </tr>
       </tbody>
+      } @else if (selectedTab === 'Damage Report') {
+      <tbody>
+        <tr>
+          <td>Jeton</td>
+          <td>15.03.2024</td>
+          <td>Front bumper</td>
+          <td>Cracked during parking</td>
+          <td><button class="more-options">...</button></td>
+        </tr>
+      </tbody>
+      }
     </table>
   </div>
   <div class="view-all">
