@@ -74,15 +74,15 @@
         <img class="kmreporticon" src="icons/kmreport.svg" alt="" />
         <a>Km Report</a>
       </li>
-      <li>
+      <li [routerLink]="['/maintenance']" routerLinkActive="active">
         <img class="maintenanceicon" src="icons/maintenance.svg" alt="" />
         <a>Maintenance History</a>
       </li>
-      <li>
+      <li [routerLink]="['/damage-report']" routerLinkActive="active">
         <img class="damageicon" src="icons/damage.svg" alt="" />
         <a>Damage Report</a>
       </li>
-      <li>
+      <li [routerLink]="['/request-new-car']" routerLinkActive="active">
         <img class="requesticon" src="icons/request.svg" alt="" />
         <a>Request New Car</a>
       </li>
@@ -115,7 +115,14 @@
     <!-- User Profile -->
     <div class="user-profile">
       <img src="icons/driver.png" alt="User" />
-      <span *ngIf="userName; else guest">{{ userName }}</span>
+      @if (userName) {
+      <span>{{ userName }}</span>
+      } @else {
+      <ng-template #guest>
+        <span>Guest</span>
+      </ng-template>
+      }
+
       <ng-template #guest><span>Guest</span></ng-template>
       <img
         id="logouticon"

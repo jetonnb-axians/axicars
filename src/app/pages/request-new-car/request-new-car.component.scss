@@ -1,19 +1,11 @@
-* {
-  box-sizing: border-box;
-}
-html,
-body {
-  width: 100%;
-}
-
 .table-container {
+  overflow-x: hidden;
   width: 100%;
-  max-width: 100vw;
+  width: 94%;
   background: #fff;
   border-radius: 10px;
   padding: 20px;
   margin: auto;
-  box-sizing: border-box;
 }
 
 h1 {
@@ -22,13 +14,12 @@ h1 {
 
 .table-tabs {
   display: flex;
-  justify-content: space-around;
-  position: relative;
+  justify-content: center;
+  align-items: center;
   border-bottom: 2px solid #ddd;
+  padding-bottom: 10px;
   margin-bottom: 20px;
-  flex-wrap: wrap; /* ensures wrapping on small screens */
-  width: 100%;
-  gap: 20px; /* adjust as needed */
+  gap: 500px;
 }
 
 .tab {
@@ -40,19 +31,22 @@ h1 {
   color: #9291919b;
   border-bottom: none;
   transition: all 0.3s ease-in-out;
-  bottom: -2px;
+  bottom: -12px;
 }
 
 .tab.active {
   color: #000000;
+}
+.tab:last-child {
+  margin-right: 0;
 }
 
 .tab::after {
   content: "";
   position: absolute;
   bottom: 0;
-  left: -90px;
-  right: -120px;
+  left: -150px;
+  right: -150px;
   height: 2px;
   background-color: transparent;
   transition: background-color 0.3s ease-in-out;
@@ -77,13 +71,13 @@ input[type="search"] {
   width: 230px;
 }
 
-.cardatabase-table {
+.carrequest-table {
   width: 100%;
   border-collapse: collapse;
   background: #fff;
 }
 
-.cardatabase-table td {
+.carrequest-table td {
   padding: 12px;
   border-bottom: 1px solid #ddd;
   text-align: left;
@@ -97,14 +91,13 @@ input[type="search"] {
 .table-body tr {
   border-radius: 10px;
   border-top: 1px solid #ddd;
-  box-shadow: 0 4px 12px rgba(27, 26, 26, 0.1);
+  box-shadow: 0 4px 12px rgba(69, 69, 69, 0.1);
 }
 
 .table-body td {
   padding: 10px;
   border: none;
 }
-
 .status.active {
   color: green;
   font-weight: bold;
@@ -115,13 +108,17 @@ input[type="search"] {
   border: none;
   font-size: 18px;
   cursor: pointer;
-  position: relative;
-  display: inline-block;
 }
 
-.cardatabase-table td:first-child {
+.carrequest-table td:first-child {
+  display: flex;
   align-items: center;
   gap: 10px;
+}
+
+.kmreport-table td:first-child img {
+  width: 30px;
+  height: auto;
 }
 
 label {
@@ -135,8 +132,6 @@ input[type="search"] {
   background-color: rgba(164, 164, 164, 0.166);
   border: none;
   border-radius: 5px;
-  font-size: 14px;
-  width: 250px;
   outline: none;
   transition: 0.3s;
 }
@@ -193,49 +188,30 @@ ul {
   object-fit: cover;
 }
 
-.responsive-img {
-  height: 35px;
-  width: 35px;
-  background-repeat: no-repeat;
-  background-size: contain;
-}
-
-.dropdown-menu {
-  position: absolute;
-  background: #f4f4f4;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  top: 30px;
-  right: 0;
-  width: 150px;
-  z-index: 100;
-  padding: 2px;
-}
-
-.dropdown-item {
-  display: flex;
+.plusicon {
   align-items: center;
-  padding: 5px 12px;
-  cursor: pointer;
-  color: #000;
-  transition: background 0.3s;
+  display: flex;
+  flex-direction: row;
+  padding: 1px 6px;
 }
-
-.dropdown-item img {
-  width: 16px;
+.plusicon img {
   margin-right: 10px;
+  align-items: flex-start;
+  display: flex;
+  justify-content: center;
 }
 
-.dropdown-item:hover {
-  background: #eaeaea;
+.add-button.added {
+  background-color: #e0e1dd;
+  color: #1e72c0;
+  cursor: not-allowed;
+  padding: 11px 37px;
+  font-size: 15px;
 }
 
-.dropdown-item.delete {
-  color: #ff4d4d;
-}
-
-.clickable-td {
-  cursor: pointer;
-  color: inherit;
-  text-decoration: none;
+.add-button.added img {
+  margin-right: 10px;
+  align-items: flex-start;
+  display: flex;
+  justify-content: center;
 }

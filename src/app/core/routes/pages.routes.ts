@@ -8,6 +8,9 @@ import { DriverProfileComponent } from '../../pages/driver-profile/driver-profil
 import { CarDetailComponent } from '../../pages/car-detail/car-detail.component';
 import { AdminGuard } from '..//../guards/admin.guard';
 import { RedirectGuard } from '../../guards/redrict.guard';
+import { MaintenanceComponent } from '../../pages/maintenance/maintenance.component';
+import { DamageReportComponent } from '../../pages/damage-report/damage-report.component';
+import { RequestNewCarComponent } from '../../pages/request-new-car/request-new-car.component';
 
 export default [
   {
@@ -22,6 +25,18 @@ export default [
   {
     path: 'kmreports',
     component: KmReportsComponent,
+  },
+  {
+    path: 'maintenance',
+    component: MaintenanceComponent,
+  },
+  {
+    path: 'damage-report',
+    component: DamageReportComponent,
+  },
+  {
+    path: 'request-new-car',
+    component: RequestNewCarComponent,
   },
   {
     path: 'cardatabase',

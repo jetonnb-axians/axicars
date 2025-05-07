@@ -9,14 +9,15 @@
   </div>
 
   <ul class="table-tabs">
+    @for (tab of tabs; track $index) {
     <li
-      *ngFor="let tab of tabs; let i = index"
       class="tab"
-      [class.active]="activeTab === i"
-      (click)="setActiveTab(i)"
+      [class.active]="activeTab === $index"
+      (click)="setActiveTab($index)"
     >
       {{ tab }}
     </li>
+    }
   </ul>
 
   <label class="search-label">
@@ -62,17 +63,16 @@
         </td>
 
         <td>
-          @if(item.carModel) {
+          @if (item.carModel) {
           <div style="display: flex; align-items: center; gap: 8px">
-            <img src="icons/carpng.png" width="30px" height="30px" alt="Car" />
-            <span>
-              {{ item.carModel }}
-            </span>
+            <img src="icons/carpng.png" width="30" height="30" alt="Car" />
+            <span>{{ item.carModel }}</span>
           </div>
           } @else {
           <span>-</span>
           }
         </td>
+
         <td>
           {{ item.plateNumber || "-" }}
         </td>
@@ -80,7 +80,7 @@
         <td>
           <div class="more-options" (click)="toggleDropdown(item, $event)">
             <img src="icons/dots.svg" alt="More" />
-            @if(activeDropdownId === item.id) {
+            @if (activeDropdownId === item.id) {
             <div class="dropdown-menu">
               <div
                 class="dropdown-item"

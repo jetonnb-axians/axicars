@@ -7,6 +7,7 @@
   padding-top: 2rem;
   padding-right: 2rem;
   justify-content: flex-start;
+  overflow: hidden;
 
   .boxes {
     display: grid;
@@ -77,7 +78,7 @@
     width: 94%;
     background: #fff;
     border-radius: 10px;
-    padding-top: 60px;
+    margin-bottom: 30px;
   }
 
   .table-tabs {
@@ -248,18 +249,7 @@
   }
 }
 
-@media (max-width: 1200px) {
-  .table-container {
-    width: 100%;
-    padding: 20px;
-  }
-  .table-tabs {
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 10px;
-  }
-}
-@media (max-width: 1600px) {
+@media (max-width: 1750px) {
   .dashboard {
     .box {
       background: #eeeeee;

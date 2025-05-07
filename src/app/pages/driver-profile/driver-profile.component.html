@@ -1,4 +1,5 @@
-<div class="driver-profile-container" *ngIf="driver">
+@if (driver) {
+<div class="driver-profile-container">
   <h1>Driver Profile</h1>
   <div class="header-container">
     <div class="profile-header-container">
@@ -52,11 +53,11 @@
             stroke-linejoin="round"
           />
         </svg>
-
         Edit
       </button>
     </div>
   </div>
+
   <div class="report-section">
     <div class="report-tabs">
       <button
@@ -121,10 +122,10 @@
       }
     </div>
   </div>
-  <ng-template #loading>
-    <p>Loading driver profile...</p>
-  </ng-template>
 </div>
+} @else {
+<p>Loading driver profile...</p>
+}
 
 <app-add-driver-modal
   #editDriverModal

@@ -20,14 +20,12 @@
           <tr>
             <td class="upload-text">
               <div class="content-left-side">
-                <img
-                  *ngIf="filePreview"
-                  [src]="filePreview"
-                  alt="Selected Image"
-                  width="50"
-                />
+                @if (filePreview) {
+                <img [src]="filePreview" alt="Selected Image" width="50" />
+                }
                 {{ fileName }}
               </div>
+
               <div class="content-right-side">
                 <p class="file-size" style="color: gray white">
                   File Size:

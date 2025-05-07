@@ -109,7 +109,9 @@
           >Log in</a
         >
       </p>
-      <p *ngIf="errorMessage" class="error-text">{{ errorMessage }}</p>
+      @if (errorMessage) {
+      <p class="error-text">{{ errorMessage }}</p>
+      }
     </div>
   </div>
   <div class="background"></div>

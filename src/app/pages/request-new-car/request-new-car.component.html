@@ -1,0 +1,58 @@
+<div class="table-container">
+  <div>
+    <h1>Request New Car</h1>
+    <label class="search-label">
+      <div class="search-wrapper">
+        <input type="search" placeholder="Search" />
+        <img src="icons/search.svg" alt="" />
+      </div>
+    </label>
+  </div>
+
+  <ul class="table-tabs">
+    @for (tab of tabs; track tab) {
+    <li
+      class="tab"
+      [class.active]="activeTab === $index"
+      (click)="setActiveTab($index)"
+    >
+      {{ tab }}
+    </li>
+    }
+  </ul>
+
+  <table class="carrequest-table">
+    <thead>
+      <tr>
+        <td>Model</td>
+        <td>Plate number</td>
+        <td>Km</td>
+        <td>Fuel</td>
+
+        <td></td>
+      </tr>
+    </thead>
+    <tbody class="table-body">
+      <tr>
+        <td><img src="icons/carpng.png" alt="" />Peugeot 208 2021</td>
+        <td>01-120-RKS</td>
+        <td>50.000</td>
+        <td>Diesel</td>
+        <td>
+          <button
+            class="add-button"
+            [ngClass]="{ added: added }"
+            (click)="markAsAdded()"
+            [disabled]="added"
+          >
+            <span class="plusicon">
+              <img *ngIf="!added" src="icons/plus.svg" alt="" />
+              <img *ngIf="added" src="icons/check.svg" alt="" />
+              {{ added ? "Added" : "Add Request" }}
+            </span>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
