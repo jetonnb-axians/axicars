@@ -1,15 +1,35 @@
-import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { inject, Injectable } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [RouterModule],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
 })
 export class DashboardComponent {
   authService = inject(AuthService);
+  router = inject(Router);
+
   selectedTab: string = 'KM Report'; // default tab
+
+  viewAll() {
+    let route = '';
+
+    switch (this.selectedTab) {
+      case 'KM Report':
+        route = '/kmreports';
+        break;
+      case 'Maintenance History':
+        route = '/maintenance';
+        break;
+      case 'Damage Report':
+        route = '/damage-report';
+        break;
+      default:
+        route = '/kmreports';
+    }
+
+    this.router.navigate([route]);
+  }
 }

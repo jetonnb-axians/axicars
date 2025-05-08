@@ -46,8 +46,12 @@
             [disabled]="added"
           >
             <span class="plusicon">
-              <img *ngIf="!added" src="icons/plus.svg" alt="" />
-              <img *ngIf="added" src="icons/check.svg" alt="" />
+              @if (!added) {
+              <img src="icons/plus.svg" alt="" />
+              } @else {
+              <img src="icons/check.svg" alt="" />
+              }
+
               {{ added ? "Added" : "Add Request" }}
             </span>
           </button>

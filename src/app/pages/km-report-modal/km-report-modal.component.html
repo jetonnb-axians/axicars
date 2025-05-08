@@ -1,0 +1,67 @@
+<div class="modal-overlay">
+  <div class="modal-content">
+    <span class="close" (click)="close()">×</span>
+    <div class="modal-header">
+      <h2>Add Km Report</h2>
+      <p>Fill out the form below to add a km report.</p>
+    </div>
+    <form>
+      <div class="container">
+        <div class="form-grid">
+          <div class="column">
+            <div class="input-group">
+              <div class="input-group-one">
+                <div class="input-form">
+                  <label for="firstName">First Name</label>
+                  <input
+                    formControlName="firstName"
+                    type="text"
+                    id="firstName"
+                    required
+                  />
+                </div>
+                <div class="input-form">
+                  <label for="lastName">Last Name</label>
+                  <input
+                    formControlName="lastName"
+                    type="text"
+                    id="lastName"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="input-group-one">
+                <div class="input-form">
+                  <label for="phoneNumber">Phone Number</label>
+                  <input
+                    formControlName="phoneNumber"
+                    type="text"
+                    id="phoneNumber"
+                    required
+                  />
+                </div>
+                <div class="input-form">
+                  <label for="emailAddress">Email Address</label>
+                  <input
+                    formControlName="emailAddress"
+                    type="text"
+                    id="emailAddress"
+                    required
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="buttons">
+          <button class="cancel-btn" type="button" (click)="close()">
+            Cancel
+          </button>
+          <button class="add-btn" type="submit">Add</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
