@@ -2,16 +2,22 @@
 
 <div class="add-car-kmreport">
   <div class="date-button">
-    <label for="from-date"
-      >From <input type="date" id="from-date" value="2024-02-10"
-    /></label>
+    <label for="from-date">
+      From <input type="date" id="from-date" value="2024-02-10" />
+    </label>
 
-    <label for="to-date"
-      >To <input type="date" id="to-date" value="2024-02-11"
-    /></label>
+    <label for="to-date">
+      To <input type="date" id="to-date" value="2024-02-11" />
+    </label>
   </div>
-  <button class="add-button">Add Maintenance History</button>
+  <button class="add-button" (click)="openModal()">
+    Add Maintenance History
+  </button>
 </div>
+
+@if (showModal) {
+<app-km-report-modal [closeCallback]="closeModal"></app-km-report-modal>
+}
 
 <div class="table-container">
   <table class="kmreport-table">
@@ -77,3 +83,9 @@
     </tbody>
   </table>
 </div>
+
+<app-km-report-modal
+  *ngIf="showModal"
+  [closeCallback]="closeModal"
+  modalType="maintenance"
+/>

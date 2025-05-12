@@ -2,17 +2,91 @@
   <div class="modal-content">
     <span class="close" (click)="close()">×</span>
     <div class="modal-header">
-      <h2>Add Km Report</h2>
-      <p>Fill out the form below to add a km report.</p>
+      <h2>
+        @if (modalType === 'maintenance') { Add Maintenance History } @else if
+        (modalType === 'damage') { Add Damage Report } @else { Add Km Report }
+      </h2>
+      <p>
+        @if (modalType === 'maintenance') { Fill out the form below to add a
+        maintenance history entry. } @else if (modalType === 'damage') { Fill
+        out the form below to report a vehicle damage. } @else { Fill out the
+        form below to add a km report. }
+      </p>
     </div>
+
     <form>
       <div class="container">
         <div class="form-grid">
           <div class="column">
             <div class="input-group">
+              @if (modalType === 'maintenance') {
               <div class="input-group-one">
                 <div class="input-form">
-                  <label for="firstName">First Name</label>
+                  <label for="date">Date</label>
+                  <input type="date" id="date" required />
+                </div>
+                <div class="input-form">
+                  <label for="description">Description of Work</label>
+                  <input type="text" id="description" required />
+                </div>
+              </div>
+
+              <div class="input-group-one">
+                <div class="input-form">
+                  <label for="warranty">Warranty</label>
+                  <input type="text" id="warranty" required />
+                </div>
+                <div class="input-form">
+                  <label for="totalCost">Total Cost</label>
+                  <input type="text" id="totalCost" required />
+                </div>
+              </div>
+              } @else if (modalType === 'damage') {
+              <div class="input-group-one">
+                <div class="input-form">
+                  <label for="driver">Driver</label>
+                  <input
+                    formControlName="driver"
+                    type="text"
+                    id="driver"
+                    required
+                  />
+                </div>
+                <div class="input-form">
+                  <label for="damageDate">Date</label>
+                  <input
+                    formControlName="damageDate"
+                    type="date"
+                    id="damageDate"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="input-group-one">
+                <div class="input-form">
+                  <label for="equipment">Equipment Involved</label>
+                  <input
+                    formControlName="equipment"
+                    type="text"
+                    id="equipment"
+                    required
+                  />
+                </div>
+                <div class="input-form">
+                  <label for="damage">Damage</label>
+                  <input
+                    formControlName="damage"
+                    type="text"
+                    id="damage"
+                    required
+                  />
+                </div>
+              </div>
+              } @else {
+              <div class="input-group-one">
+                <div class="input-form">
+                  <label for="firstName">Driver</label>
                   <input
                     formControlName="firstName"
                     type="text"
@@ -21,11 +95,11 @@
                   />
                 </div>
                 <div class="input-form">
-                  <label for="lastName">Last Name</label>
+                  <label for="date">Car pickup date</label>
                   <input
-                    formControlName="lastName"
-                    type="text"
-                    id="lastName"
+                    formControlName="date"
+                    type="date"
+                    id="date"
                     required
                   />
                 </div>
@@ -33,24 +107,25 @@
 
               <div class="input-group-one">
                 <div class="input-form">
-                  <label for="phoneNumber">Phone Number</label>
+                  <label for="kmBeforePickup">Km before pickup</label>
                   <input
-                    formControlName="phoneNumber"
-                    type="text"
-                    id="phoneNumber"
+                    formControlName="kmBeforePickup"
+                    type="number"
+                    id="kmBeforePickup"
                     required
                   />
                 </div>
                 <div class="input-form">
-                  <label for="emailAddress">Email Address</label>
+                  <label for="kmAfterPickup">Km after pickup</label>
                   <input
-                    formControlName="emailAddress"
-                    type="text"
-                    id="emailAddress"
+                    formControlName="kmAfterPickup"
+                    type="number"
+                    id="kmAfterPickup"
                     required
                   />
                 </div>
               </div>
+              }
             </div>
           </div>
         </div>

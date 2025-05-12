@@ -10,6 +10,7 @@ import { CommonModule } from '@angular/common';
 })
 export class KmReportModalComponent {
   @Input() closeCallback!: () => void;
+  @Input() modalType: 'km-report' | 'maintenance' | 'damage' = 'km-report';
 
   close() {
     if (this.closeCallback) {
