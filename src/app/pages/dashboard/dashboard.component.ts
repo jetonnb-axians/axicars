@@ -32,4 +32,17 @@ export class DashboardComponent {
 
     this.router.navigate([route]);
   }
+
+  getAddLabel(): string {
+    switch (this.selectedTab) {
+      case 'KM Report':
+        return 'Km Report';
+      case 'Maintenance History':
+        return 'Maintenance';
+      case 'Damage Report':
+        return 'Damage Report';
+      default:
+        return '';
+    }
+  }
 }

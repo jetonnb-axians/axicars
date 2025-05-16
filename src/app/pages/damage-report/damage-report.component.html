@@ -12,11 +12,12 @@
   <button class="add-button" (click)="openModal()">Add Damage Report</button>
 </div>
 
+@if (showModal) {
 <app-km-report-modal
-  *ngIf="showModal"
   [closeCallback]="closeModal"
   modalType="damage"
 ></app-km-report-modal>
+}
 
 <div class="table-container">
   <table class="kmreport-table">
