@@ -5,13 +5,14 @@ import { AuthService } from '../../services/auth.service';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrl: './dashboard.component.scss',
+  styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent {
   authService = inject(AuthService);
   router = inject(Router);
 
-  selectedTab: string = 'KM Report'; // default tab
+  selectedTab: string = 'KM Report';
+  showModal: boolean = false;
 
   viewAll() {
     let route = '';
@@ -45,4 +46,12 @@ export class DashboardComponent {
         return '';
     }
   }
+
+  openModal() {
+    this.showModal = true;
+  }
+
+  closeModal = () => {
+    this.showModal = false;
+  };
 }

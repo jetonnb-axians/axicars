@@ -66,7 +66,9 @@
           >To <input type="date" id="to-date" value="2024-02-11"
         /></label>
       </div>
-      <button class="add-button">Add {{ getAddLabel() }}</button>
+      <button class="add-button" (click)="openModal()">
+        Add {{ getAddLabel() }}
+      </button>
     </div>
     <div>
       <table class="kmreport-table">
